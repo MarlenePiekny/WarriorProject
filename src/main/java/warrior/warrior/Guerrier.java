@@ -41,6 +41,14 @@ public class Guerrier {
 		this.shield = shield;
 	}
 	
+	//SPECIFIC METHODS
+	
+	public String displayInformation() {
+		return "Welcome " + name + " you are a guerrier! Here are your info : \n"
+				+ "life level : " + lifeLevel + "\n"
+				+ "attack strength : " + attackStrength;
+	}
+	
 	// GETTERS
 
 	public String getName() {

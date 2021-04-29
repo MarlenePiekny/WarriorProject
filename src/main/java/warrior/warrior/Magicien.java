@@ -42,6 +42,14 @@ public class Magicien {
 		this.potion = potion;
 	}
 	
+	//SPECIFIC METHODS
+	
+	public String displayInformation() {
+		return "Welcome " + name + " you are a magicien! Here are your info : \n"
+				+ "life level : " + lifeLevel + "\n"
+				+ "attack strength : " + attackStrength;
+	}
+	
 	// GETTERS
 	
 	public String getName() {

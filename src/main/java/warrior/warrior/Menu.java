@@ -18,16 +18,16 @@ public class Menu {
 		switch (inputCharacterChoice) {
 			case "guerrier" :
 				//create a guerrier
-				//Guerrier warrior1 = new Guerrier();
-				//System.out.println(warrior1.getName());
+				Guerrier warrior1 = new Guerrier();
+				System.out.println(warrior1.displayInformation());
 			break;
 			case "magicien" :
 				//create a magicien
-				//Magicien warrior2 = new Magicien();
-				//System.out.println(warrior2.getName());
+				Magicien warrior2 = new Magicien();
+				System.out.println(warrior2.displayInformation());
 			break;
 			default :
-				//System.out.println("Please enter guerrier ou magicien");
+				System.out.println("Please enter guerrier ou magicien");
 		}
 		
 		
