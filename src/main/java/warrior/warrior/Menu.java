@@ -2,9 +2,12 @@ package warrior;
 import java.util.Scanner;
 
 public class Menu {
-
-	public static void main(String[] args) {
 	
+		//Attributes
+	
+		//Methods
+		public Menu() {
+
 		Scanner keyboard = new Scanner(System.in);
 	
 		System.out.println("Welcome in the Warrior game");
@@ -22,7 +25,7 @@ public class Menu {
 				//CREATE
 				Guerrier warrior = null;
 				
-				//No personnalisation
+				//No personalization
 				boolean isNoGuerrier = true;
 				while (isNoGuerrier) {
 					
@@ -113,8 +116,8 @@ public class Menu {
 		
 		
 		
-		//Close the keyboard
-		keyboard.close();
+	//Close the keyboard
+	keyboard.close();
 	
 	}
 
