@@ -9,7 +9,7 @@ public class Magicien {
 	private int lifeLevel = 5 ;
 	private int attackStrength = 8;
 	private boolean spell = false;
-	private boolean  potion = false;
+	private boolean  philter = false;
 	
 	
 	//Guerrier constructor without any input
@@ -19,7 +19,7 @@ public class Magicien {
 		this.lifeLevel = lifeLevel;
 		this.attackStrength = attackStrength;
 		this.spell = spell;
-		this.potion = potion;
+		this.philter = philter;
 	}
 	
 	//Guerrier constructor with name
@@ -29,7 +29,7 @@ public class Magicien {
 			this.lifeLevel = lifeLevel;
 			this.attackStrength = attackStrength;
 			this.spell = spell;
-			this.potion = potion;
+			this.philter = philter;
 		}
 	
 	//Guerrier constructor with 4 inputs
@@ -39,7 +39,7 @@ public class Magicien {
 		this.lifeLevel = inputLifeLevel;
 		this.attackStrength = inputAttackStrength;
 		this.spell = spell;
-		this.potion = potion;
+		this.philter = philter;
 	}
 	
 	//SPECIFIC METHODS
@@ -74,7 +74,7 @@ public class Magicien {
 	}
 	
 	public boolean isPotion() {
-		return potion;
+		return philter;
 	}
 		
 	// SETTERS
@@ -100,7 +100,7 @@ public class Magicien {
 	}
 	
 	public void setPotion(boolean potion) {
-		this.potion = potion;
+		this.philter = potion;
 	}
 
 	
@@ -108,7 +108,7 @@ public class Magicien {
 	@Override
 	public String toString() {
 		return "Magicien [name=" + name + ", pictureURL=" + pictureURL + ", lifeLevel=" + lifeLevel
-				+ ", attackStrength=" + attackStrength + ", spell=" + spell + ", potion=" + potion + "]";
+				+ ", attackStrength=" + attackStrength + ", spell=" + spell + ", potion=" + philter + "]";
 	}
 	
 	
