@@ -1,4 +1,4 @@
-
+package warrior;
 
 public class Guerrier {
 	
@@ -41,6 +41,63 @@ public class Guerrier {
 		this.shield = shield;
 	}
 	
+	// GETTERS
+
+	public String getName() {
+		return name;
+	}
+
+	public String getPictureURL() {
+		return pictureURL;
+	}
+
+	public int getLifeLevel() {
+		return lifeLevel;
+	}
+
+	public int getAttackStrength() {
+		return attackStrength;
+	}
+
+	public boolean isWeapon() {
+		return weapon;
+	}
+
+	public boolean isShield() {
+		return shield;
+	}
 	
+	// SETTERS
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPictureURL(String pictureURL) {
+		this.pictureURL = pictureURL;
+	}
+
+	public void setLifeLevel(int lifeLevel) {
+		this.lifeLevel = lifeLevel;
+	}
+
+	public void setAttackStrength(int attackStrength) {
+		this.attackStrength = attackStrength;
+	}
+
+	public void setWeapon(boolean weapon) {
+		this.weapon = weapon;
+	}
+
+	public void setShield(boolean shield) {
+		this.shield = shield;
+	}
+	
+	// TO STRING
+		@Override
+	public String toString() {
+			return "Guerrier [name= " + name + "pictureURL= " + pictureURL + "lifeLevel= " + lifeLevel + 
+					"attackStrength= " + attackStrength + "weapon= " + weapon + "shield= " + shield;
+		}
 
 }
