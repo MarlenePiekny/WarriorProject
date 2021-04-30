@@ -1,4 +1,5 @@
 package warrior;
+import java.util.Scanner;
 
 public class Launch {
 	
@@ -7,9 +8,9 @@ public class Launch {
 	//METHODS
 	
 	public static void main(String[] args) {
-		
-		
+	
 		Menu menu = new Menu();
+
 	}
 	
 }

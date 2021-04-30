@@ -4,6 +4,9 @@ import java.util.Scanner;
 public class Menu {
 	
 		//ATTRIBUTES
+		private Warrior character;
+		private Wizard character1;
+		
 	
 		//METHODS
 	
@@ -201,6 +204,35 @@ public class Menu {
 	}
 	
 		//METHODS
+		
+		public Warrior createWarrior() {
+			
+		}
+		
+		public Wizard createWizard() {
+			
+		}
+		
+		public Warrior seeWarrior() {
+			
+		}
+		
+		public Wizard Wizard() {
+			
+		}
+		
+		public void updateWarrior() {
+			
+		}
+		
+		public void updateWizard() {
+			
+		}
+		
+		public void endGame() {
+			System.exit(0);
+		}
+		
 		
 		//GETTERS
 		
