@@ -1,111 +1,116 @@
 package warrior;
 
-public class Guerrier {
+
+public class Wizard {
 	
-	//Default attributs
-	private String name = "Xena";
+	//ATTRIBUTES
+	private String name = "Merlin";
 	private String pictureURL = "";
 	private int lifeLevel = 5 ;
 	private int attackStrength = 8;
-	private boolean weapon = false;
-	private boolean shield = false;
+	private boolean spell = false;
+	private boolean  philter = false;
 	
 	
 	//Guerrier constructor without any input
-	public Guerrier() {
+	public Wizard() {
 		this.name = name;
 		this.pictureURL = pictureURL;
 		this.lifeLevel = lifeLevel;
 		this.attackStrength = attackStrength;
-		this.weapon = weapon;
-		this.shield = shield;
+		this.spell = spell;
+		this.philter = philter;
 	}
 	
 	//Guerrier constructor with name
-		public Guerrier(String inputName) {
+		public Wizard(String inputName) {
 			this.name = inputName;
 			this.pictureURL = pictureURL;
 			this.lifeLevel = lifeLevel;
 			this.attackStrength = attackStrength;
-			this.weapon = weapon;
-			this.shield = shield;
+			this.spell = spell;
+			this.philter = philter;
 		}
 	
 	//Guerrier constructor with 4 inputs
-	public Guerrier(String inputName, String inputPicture, int inputLifeLevel, int inputAttackStrength) {
+	public Wizard(String inputName, String inputPicture, int inputLifeLevel, int inputAttackStrength) {
 		this.name = inputName;
 		this.pictureURL = inputPicture;
 		this.lifeLevel = inputLifeLevel;
 		this.attackStrength = inputAttackStrength;
-		this.weapon = weapon;
-		this.shield = shield;
+		this.spell = spell;
+		this.philter = philter;
 	}
 	
 	//SPECIFIC METHODS
 	
 	public String displayInformation() {
-		return "Welcome " + name + " you are a guerrier! Here are your info : \n"
-				+ "life level : " + lifeLevel + "\n"
-				+ "attack strength : " + attackStrength;
+		return "Welcome " + this.name + " you are a wizard! Here are your info : \n"
+				+ "life level : " + this.lifeLevel + "\n"
+				+ "attack strength : " + this.attackStrength;
 	}
 	
 	// GETTERS
-
+	
 	public String getName() {
-		return name;
-	}
-
-	public String getPictureURL() {
-		return pictureURL;
-	}
-
-	public int getLifeLevel() {
-		return lifeLevel;
-	}
-
-	public int getAttackStrength() {
-		return attackStrength;
-	}
-
-	public boolean isWeapon() {
-		return weapon;
-	}
-
-	public boolean isShield() {
-		return shield;
+		return this.name;
 	}
 	
+	public String getPictureURL() {
+		return this.pictureURL;
+	}
+	
+	public int getLifeLevel() {
+		return this.lifeLevel;
+	}
+	
+	public int getAttackStrength() {
+		return this.attackStrength;
+		
+	}
+	
+	public boolean isSpell() {
+		return this.spell;
+	}
+	
+	public boolean isPhilter() {
+		return this.philter;
+	}
+		
 	// SETTERS
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public void setPictureURL(String pictureURL) {
 		this.pictureURL = pictureURL;
 	}
-
+	
 	public void setLifeLevel(int lifeLevel) {
 		this.lifeLevel = lifeLevel;
 	}
-
+	
 	public void setAttackStrength(int attackStrength) {
 		this.attackStrength = attackStrength;
 	}
-
-	public void setWeapon(boolean weapon) {
-		this.weapon = weapon;
-	}
-
-	public void setShield(boolean shield) {
-		this.shield = shield;
+	
+	public void setSpell(boolean spell) {
+		this.spell = spell;
 	}
 	
-	// TO STRING
-		@Override
-	public String toString() {
-			return "Guerrier [name= " + name + "pictureURL= " + pictureURL + "lifeLevel= " + lifeLevel + 
-					"attackStrength= " + attackStrength + "weapon= " + weapon + "shield= " + shield;
-		}
+	public void setPhilter(boolean philter) {
+		this.philter = philter;
+	}
 
+	
+	// TO STRING
+	@Override
+	public String toString() {
+		return "Wizard [name=" + this.name + ", pictureURL=" + this.pictureURL + ", lifeLevel=" + this.lifeLevel
+				+ ", attackStrength=" + this.attackStrength + ", spell=" + this.spell + ", philter=" + this.philter + "]";
+	}
+	
+	
+	
 }
