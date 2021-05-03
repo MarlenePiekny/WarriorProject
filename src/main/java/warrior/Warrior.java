@@ -1,52 +1,27 @@
 package warrior;
 
-public class Warrior {
+public class Warrior extends Character {
 	
 	//ATTRIBUTES
-	private String name = "Xena";
-	private String pictureURL = "";
-	private int lifeLevel = 5 ;
-	private int attackStrength = 8;
-	private boolean weapon = false;
-	private boolean shield = false;
-	
-	private int boardSquare;
+	private AttackTool sword;
+	private DefenseTool shield;
 	
 	//METHODS
 	
 	//CONSTRUCTOR
-	
 	//Warrior constructor without any input
 	public Warrior() {
-		this.name = name;
-		this.pictureURL = pictureURL;
-		this.lifeLevel = lifeLevel;
-		this.attackStrength = attackStrength;
-		this.weapon = weapon;
-		this.shield = shield;
-		this.boardSquare = boardSquare;
+
 	}
 	
 	//Warrior constructor with name
-		public Warrior(String inputName) {
-			this.name = inputName;
-			this.pictureURL = pictureURL;
-			this.lifeLevel = lifeLevel;
-			this.attackStrength = attackStrength;
-			this.weapon = weapon;
-			this.shield = shield;
-			this.boardSquare = boardSquare;
-		}
+	public Warrior(String inputName) {
+		super(inputName);
+	}
 	
 	//Warrior constructor with 4 inputs
 	public Warrior(String inputName, String inputPicture, int inputLifeLevel, int inputAttackStrength) {
-		this.name = inputName;
-		this.pictureURL = inputPicture;
-		this.lifeLevel = inputLifeLevel;
-		this.attackStrength = inputAttackStrength;
-		this.weapon = weapon;
-		this.shield = shield;
-		this.boardSquare = boardSquare;
+		super(inputName, inputPicture, inputLifeLevel, inputAttackStrength);
 	}
 	
 	//SPECIFIC METHODS
@@ -82,15 +57,17 @@ public class Warrior {
 	public int getAttackStrength() {
 		return this.attackStrength;
 	}
+	*/
 
-	public boolean isWeapon() {
-		return this.weapon;
+	public AttackTool getSword() {
+		return this.sword;
 	}
 
-	public boolean isShield() {
+	public DefenseTool getShield() {
 		return this.shield;
 	}
 	
+	/*
 	public int getBoardSquare() {
 		return this.boardSquare;
 	}
@@ -112,12 +89,12 @@ public class Warrior {
 	public void setAttackStrength(int attackStrength) {
 		this.attackStrength = attackStrength;
 	}
-
-	public void setWeapon(boolean weapon) {
-		this.weapon = weapon;
+	*/
+	public void setSword(AttackTool sword) {
+		this.sword = sword;
 	}
 
-	public void setShield(boolean shield) {
+	public void setShield(DefenseTool shield) {
 		this.shield = shield;
 	}
 	
@@ -129,7 +106,7 @@ public class Warrior {
 		@Override
 	public String toString() {
 			return "Warrior [name= " + this.name + "pictureURL= " + this.pictureURL + "lifeLevel= " + this.lifeLevel + 
-					"attackStrength= " + this.attackStrength + "weapon= " + this.weapon + "shield= " + this.shield +
+					"attackStrength= " + this.attackStrength + "sword= " + this.sword + "shield= " + this.shield +
 					"square board= " + this.boardSquare + "]";
 		}
 

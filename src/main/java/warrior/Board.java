@@ -4,58 +4,50 @@ import java.util.Arrays;
 
 public class Board {
 
-	//ATTRIBUTES
+	// ATTRIBUTES
 	private int numberOfSquares = 64;
 	private int beginningSquare = 1;
-	private String tabBoard[] = new String [numberOfSquares + 1];
+	private String tabBoard[] = new String[numberOfSquares + 1];
 
+	// METHODS
 
-	//METHODS
-	
-	//CONSTRUCTOR
+	// CONSTRUCTOR
 	public Board() {
 		this.tabBoard = tabBoard;
 	};
-	
-	//SPECIFIC METHODS
-	
-	public void putCharacterInBoard(Warrior character) { 
+
+	// SPECIFIC METHODS
+
+	public void putCharacterInBoard(Character character) {
 		this.tabBoard[character.getBoardSquare()] = character.getName();
 	}
-	
 
-	public void removeCharacterInBoard(Warrior character) {
+	public void removeCharacterInBoard(Character character) {
 		this.tabBoard[character.getBoardSquare()] = null;
 	}
-	
-	
-	//GETTERS
-	
+
+	// GETTERS
+
 	public int getNumberOfSquare() {
 		return this.numberOfSquares;
 	}
-	
+
 	public int getBeginningSquare() {
 		return this.beginningSquare;
 	}
-	
+
 	public String getTabBoard() {
 		return Arrays.toString(tabBoard);
 	}
-	
-	//SETTERS
-	
+
+	// SETTERS
 
 	@Override
 	public String toString() {
 		return "Board [numberOfSquares=" + numberOfSquares + ", beginningSquare=" + beginningSquare + ", tabBoard="
 				+ Arrays.toString(tabBoard) + "]";
 	}
-	
-	
-	
-	
-	//TO STRING
-	
-	
-}	
+
+	// TO STRING
+
+}
