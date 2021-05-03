@@ -102,7 +102,10 @@ public class Menu {
 						case "play":
 							System.out.println("Great! Welcome " + character.getName() + "! Let's play");
 							stayInMenu = false;
-						break;	
+						break;
+						case "exit":
+							this.endGame();
+						break;
 						default :
 							System.out.println("Sorry this answer doesn't exist :( ");
 					}
@@ -143,7 +146,7 @@ public class Menu {
 							int inputWizardAttackStrength = keyboard.nextInt();
 							character1 = new Wizard(inputWizardName1, "", inputWizardLifeLevel, inputWizardAttackStrength );
 							isNoWizard = false;
-						break;	
+						break;
 						default :
 							System.out.println("Sorry this answer doesn't exist :( ");
 					}
@@ -185,6 +188,9 @@ public class Menu {
 						case "play":
 							System.out.println("Great! Welcome " + character1.getName() + "! Let's play");
 							stayInMenu1 = false;
+						break;
+						case "exit":
+							this.endGame();
 						break;	
 						default :
 							System.out.println("Sorry this answer doesn't exist :( ");
@@ -221,37 +227,46 @@ public class Menu {
 			
 			//display the board
 			System.out.println(board.getTabBoard() );
-				
-			//Throw the dice
-			System.out.println("You throw the dice");
-			int diceResult = dice.throwDice();
 			
+			//Ask the character to throw the dice
+			System.out.println("Enter dice to continue to play or exit to leave the game");
+			String inputCharacterInGame = keyboard.nextLine();
 			
-			System.out.println("Dice result : " + diceResult);
-			
-			//Remove the character from his/her current square
-			board.removeCharacterInBoard(character);
-			
-			//Move the character to the appropriated square
-			
-			if (character.getBoardSquare() + diceResult > board.getNumberOfSquare()) {
-				//take the character to the end of the board
-				character.setBoardSquare(64);
-				
-			} else {
-				//move the character with the dice result
-				character.moveOnBoard(diceResult);	
-			}
-			
-			//Display the square of the character
-			System.out.println("Square " + character.getBoardSquare() + " / " + board.getNumberOfSquare() );
-			
-			//Actualization of the board
-			board.putCharacterInBoard(character);
-			
-			
-			
-			
+				switch (inputCharacterInGame) {
+					case "dice" :
+						//Throw the dice
+						System.out.println("You throw the dice");
+						int diceResult = dice.throwDice();
+						
+						
+						System.out.println("Dice result : " + diceResult);
+						
+						//Remove the character from his/her current square
+						board.removeCharacterInBoard(character);
+						
+						//Move the character to the appropriated square
+						
+						if (character.getBoardSquare() + diceResult > board.getNumberOfSquare()) {
+							//take the character to the end of the board
+							character.setBoardSquare(64);
+							
+						} else {
+							//move the character with the dice result
+							character.moveOnBoard(diceResult);	
+						}
+						
+						//Display the square of the character
+						System.out.println("Square " + character.getBoardSquare() + " / " + board.getNumberOfSquare() );
+						
+						//Actualization of the board
+						board.putCharacterInBoard(character);
+					break;
+					case "exit" :
+						this.endGame();
+					break;
+					default :
+						System.out.println("This word doesn't match the choices");
+				}
 			
 			}
 		
@@ -293,6 +308,7 @@ public class Menu {
 		}
 		
 		public void endGame() {
+			System.out.println("You have decided to leave the game, too bad. See you soon!");
 			System.exit(0);
 		}
 		
