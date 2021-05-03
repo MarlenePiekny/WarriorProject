@@ -1,6 +1,4 @@
-package warrior;
 
-import java.util.Scanner;
 
 public class Launch {
 

@@ -1,4 +1,4 @@
-package warrior;
+
 
 public class Wizard extends Character {
 

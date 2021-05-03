@@ -1,4 +1,4 @@
-package warrior;
+
 
 public class DefenseTool {
 

@@ -1,4 +1,4 @@
-package warrior;
+
 
 public class Warrior extends Character {
 	
@@ -57,7 +57,6 @@ public class Warrior extends Character {
 	public int getAttackStrength() {
 		return this.attackStrength;
 	}
-	*/
 
 	public AttackTool getSword() {
 		return this.sword;
@@ -67,7 +66,6 @@ public class Warrior extends Character {
 		return this.shield;
 	}
 	
-	/*
 	public int getBoardSquare() {
 		return this.boardSquare;
 	}
@@ -89,7 +87,8 @@ public class Warrior extends Character {
 	public void setAttackStrength(int attackStrength) {
 		this.attackStrength = attackStrength;
 	}
-	*/
+	
+	
 	public void setSword(AttackTool sword) {
 		this.sword = sword;
 	}
