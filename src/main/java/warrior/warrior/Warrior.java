@@ -10,11 +10,13 @@ public class Warrior {
 	private boolean weapon = false;
 	private boolean shield = false;
 	
+	private int boardSquare;
+	
 	//METHODS
 	
 	//CONSTRUCTOR
 	
-	//Guerrier constructor without any input
+	//Warrior constructor without any input
 	public Warrior() {
 		this.name = name;
 		this.pictureURL = pictureURL;
@@ -22,9 +24,10 @@ public class Warrior {
 		this.attackStrength = attackStrength;
 		this.weapon = weapon;
 		this.shield = shield;
+		this.boardSquare = boardSquare;
 	}
 	
-	//Guerrier constructor with name
+	//Warrior constructor with name
 		public Warrior(String inputName) {
 			this.name = inputName;
 			this.pictureURL = pictureURL;
@@ -32,9 +35,10 @@ public class Warrior {
 			this.attackStrength = attackStrength;
 			this.weapon = weapon;
 			this.shield = shield;
+			this.boardSquare = boardSquare;
 		}
 	
-	//Guerrier constructor with 4 inputs
+	//Warrior constructor with 4 inputs
 	public Warrior(String inputName, String inputPicture, int inputLifeLevel, int inputAttackStrength) {
 		this.name = inputName;
 		this.pictureURL = inputPicture;
@@ -42,6 +46,7 @@ public class Warrior {
 		this.attackStrength = inputAttackStrength;
 		this.weapon = weapon;
 		this.shield = shield;
+		this.boardSquare = boardSquare;
 	}
 	
 	//SPECIFIC METHODS
@@ -50,6 +55,14 @@ public class Warrior {
 		return "Welcome " + this.name + " you are a warrior! Here are your info : \n"
 				+ "life level : " + this.lifeLevel + "\n"
 				+ "attack strength : " + this.attackStrength;
+	}
+	
+	public void onBoard(Board board) {
+		this.boardSquare = board.getBeginningSquare();
+	}
+	
+	public void moveOnBoard(int move) {
+		this.boardSquare = this.boardSquare + move;
 	}
 	
 	// GETTERS
@@ -78,6 +91,10 @@ public class Warrior {
 		return this.shield;
 	}
 	
+	public int getBoardSquare() {
+		return this.boardSquare;
+	}
+	
 	// SETTERS
 
 	public void setName(String name) {
@@ -104,11 +121,16 @@ public class Warrior {
 		this.shield = shield;
 	}
 	
+	public void setBoardSquare(int newBoardSquare) {
+		this.boardSquare = newBoardSquare;
+	}
+	
 	// TO STRING
 		@Override
 	public String toString() {
 			return "Warrior [name= " + this.name + "pictureURL= " + this.pictureURL + "lifeLevel= " + this.lifeLevel + 
-					"attackStrength= " + this.attackStrength + "weapon= " + this.weapon + "shield= " + this.shield;
+					"attackStrength= " + this.attackStrength + "weapon= " + this.weapon + "shield= " + this.shield +
+					"square board= " + this.boardSquare + "]";
 		}
 
 }

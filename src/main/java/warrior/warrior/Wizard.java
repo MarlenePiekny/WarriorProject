@@ -12,7 +12,7 @@ public class Wizard {
 	private boolean  philter = false;
 	
 	
-	//Guerrier constructor without any input
+	//Wizard constructor without any input
 	public Wizard() {
 		this.name = name;
 		this.pictureURL = pictureURL;
@@ -22,7 +22,7 @@ public class Wizard {
 		this.philter = philter;
 	}
 	
-	//Guerrier constructor with name
+	//Wizard constructor with name
 		public Wizard(String inputName) {
 			this.name = inputName;
 			this.pictureURL = pictureURL;
@@ -32,7 +32,7 @@ public class Wizard {
 			this.philter = philter;
 		}
 	
-	//Guerrier constructor with 4 inputs
+	//Wizard constructor with 4 inputs
 	public Wizard(String inputName, String inputPicture, int inputLifeLevel, int inputAttackStrength) {
 		this.name = inputName;
 		this.pictureURL = inputPicture;
