@@ -42,6 +42,7 @@ public class Board {
 	public String getTabBoard() {
 		return Arrays.toString(tabBoard);
 	}
+	
 	//SETTERS
 	
 

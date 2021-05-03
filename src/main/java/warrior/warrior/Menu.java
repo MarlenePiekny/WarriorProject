@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class Menu {
 	
+		private Scanner keyboard;
+
 		//ATTRIBUTES
 		
 		
@@ -12,12 +14,14 @@ public class Menu {
 		//Constructor
 		public Menu() {
 			
+			
 		Warrior character = null;
 		Wizard character1 = null;	
 
-		Scanner keyboard = new Scanner(System.in);
+		keyboard = new Scanner(System.in);
 	
 		System.out.println("Welcome in the Warrior & Wizard game");
+		
 		
 		//while there isn't any character
 		boolean isNoCharacter = true;
@@ -31,44 +35,8 @@ public class Menu {
 			case "warrior" :
 				//CREATE
 				
+				character = createWarrior();
 				
-				//No personalization
-				boolean isNoWarrior = true;
-				while (isNoWarrior) {
-					
-				//Ask default, name customization or complete customization
-				System.out.println("Do you want to create a default warrior, a name custom warrior or a full customized warrior. Enter default, name or customized");
-				String inputCustomWarriorChoice = keyboard.nextLine();
-					
-					switch (inputCustomWarriorChoice) {
-						case "default":
-							character = new Warrior();
-							isNoWarrior = false;
-						break;
-						case "name":
-							System.out.println("You will customize your warrior, please enter his/her name");
-							String inputWarriorName = keyboard.nextLine();
-							character = new Warrior(inputWarriorName);
-							isNoWarrior = false;
-						break;
-						case "customize":
-							System.out.println("You will customize your warrior : \n" + "Please enter his/her name");
-							String inputWarriorName1 = keyboard.nextLine();
-							System.out.println("Please enter his/her life level : ");
-							int inputWarriorLifeLevel = keyboard.nextInt();
-							System.out.println("Please enter his/her attack strength : ");
-							int inputWarriorAttackStrength = keyboard.nextInt();
-							character = new Warrior(inputWarriorName1, "", inputWarriorLifeLevel, inputWarriorAttackStrength );
-							isNoWarrior = false;
-						break;	
-						default :
-							System.out.println("Sorry this answer doesn't exist :( ");
-					}
-					
-				//Display all warrior informations
-				System.out.println(character.displayInformation());	
-				isNoCharacter = false;	
-				}
 				
 			//SEE, EDIT OR PLAY
 			
@@ -285,6 +253,39 @@ public class Menu {
 		
 		public Warrior createWarrior() {
 			
+			Warrior warrior = null;
+			while (warrior == null) {
+				
+			//Ask default, name customization or complete customization
+			System.out.println("Do you want to create a default warrior, a name custom warrior or a full customized warrior. Enter default, name or customized");
+			String inputCustomWarriorChoice = keyboard.nextLine();
+				
+				switch (inputCustomWarriorChoice) {
+					case "default":
+						warrior = new Warrior();
+					break;
+					case "name":
+						System.out.println("You will customize your warrior, please enter his/her name");
+						String inputWarriorName = keyboard.nextLine();
+						warrior = new Warrior(inputWarriorName);
+					break;
+					case "customize":
+						System.out.println("You will customize your warrior : \n" + "Please enter his/her name");
+						String inputWarriorName1 = keyboard.nextLine();
+						System.out.println("Please enter his/her life level : ");
+						int inputWarriorLifeLevel = keyboard.nextInt();
+						System.out.println("Please enter his/her attack strength : ");
+						int inputWarriorAttackStrength = keyboard.nextInt();
+						warrior = new Warrior(inputWarriorName1, "", inputWarriorLifeLevel, inputWarriorAttackStrength );
+					break;	
+					default :
+						System.out.println("Sorry this answer doesn't exist :( ");
+				}
+				
+			//Display all warrior informations
+				System.out.println(warrior.displayInformation());	
+			}
+			return warrior;	
 		}
 		
 		public Wizard createWizard() {
