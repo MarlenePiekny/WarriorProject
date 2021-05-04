@@ -17,13 +17,26 @@ public class Board {
 	};
 
 	// SPECIFIC METHODS
+	
+	public void putCharacterToTheBeginning(Character character) {
+		this.tabBoard[beginningSquare] = character.getName();
+	}
 
-	public void putCharacterInBoard(Character character) {
-		this.tabBoard[character.getBoardSquare()] = character.getName();
+	public void putCharacterInBoard(Character character) throws CharacterOvertakeGameBoardException {
+		if (character.getBoardSquare() > numberOfSquares) {
+			throw new CharacterOvertakeGameBoardException();
+		} else {
+			this.tabBoard[character.getBoardSquare()] = character.getName();
+		}
+		
 	}
 
 	public void removeCharacterInBoard(Character character) {
 		this.tabBoard[character.getBoardSquare()] = null;
+	}
+	
+	public void moveCharacterToTheEnd(Character character) {
+		this.tabBoard[numberOfSquares +1] = character.getName();
 	}
 
 	// GETTERS
