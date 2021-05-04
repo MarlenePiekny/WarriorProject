@@ -55,12 +55,13 @@ public class Board {
 
 	// SETTERS
 
+	
+
+	// TO STRING
+	
 	@Override
 	public String toString() {
 		return "Board [numberOfSquares=" + numberOfSquares + ", beginningSquare=" + beginningSquare + ", tabBoard="
 				+ Arrays.toString(tabBoard) + "]";
 	}
-
-	// TO STRING
-
 }

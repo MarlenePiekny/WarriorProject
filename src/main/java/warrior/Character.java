@@ -6,6 +6,8 @@ public abstract class Character {
 	protected String pictureURL = "";
 	protected int lifeLevel = 5;
 	protected int attackStrength = 5;
+	protected AttackTool attackTool;
+	protected DefenseTool defenseTool;
 	protected int boardSquare;
 
 	// METHODS
@@ -18,6 +20,8 @@ public abstract class Character {
 		this.pictureURL = pictureURL;
 		this.lifeLevel = lifeLevel;
 		this.attackStrength = attackStrength;
+		this.attackTool = attackTool;
+		this.defenseTool = defenseTool;
 		this.boardSquare = boardSquare;
 	}
 
@@ -27,6 +31,8 @@ public abstract class Character {
 		this.pictureURL = pictureURL;
 		this.lifeLevel = lifeLevel;
 		this.attackStrength = attackStrength;
+		this.attackTool = attackTool;
+		this.defenseTool = defenseTool;
 		this.boardSquare = boardSquare;
 	}
 
@@ -36,6 +42,8 @@ public abstract class Character {
 		this.pictureURL = inputPicture;
 		this.lifeLevel = inputLifeLevel;
 		this.attackStrength = inputAttackStrength;
+		this.attackTool = attackTool;
+		this.defenseTool = defenseTool;
 		this.boardSquare = boardSquare;
 	}
 
@@ -72,6 +80,14 @@ public abstract class Character {
 	public int getBoardSquare() {
 		return this.boardSquare;
 	}
+	
+	public AttackTool getAttackTool() {
+		return attackTool;
+	}
+
+	public DefenseTool getDefenseTool() {
+		return defenseTool;
+	}
 
 	// SETTERS
 
@@ -94,12 +110,22 @@ public abstract class Character {
 	public void setBoardSquare(int newBoardSquare) {
 		this.boardSquare = newBoardSquare;
 	}
+	
+	public void setAttackTool(AttackTool attackTool) {
+		this.attackTool = attackTool;
+	}
+	
+	public void setDefenseTool(DefenseTool defenseTool) {
+		this.defenseTool = defenseTool;
+	}
 
 	// TO STRING
+	
 	@Override
 	public String toString() {
-		return "Warrior [name= " + this.name + "pictureURL= " + this.pictureURL + "lifeLevel= " + this.lifeLevel
-				+ "attackStrength= " + this.attackStrength + "square board= " + this.boardSquare + "]";
+		return "Character [name=" + name + ", pictureURL=" + pictureURL + ", lifeLevel=" + lifeLevel
+				+ ", attackStrength=" + attackStrength + ", attackTool=" + attackTool + ", defenseTool=" + defenseTool
+				+ ", boardSquare=" + boardSquare + "]";
 	}
 
 }

@@ -7,8 +7,8 @@ public class Game {
 
 	// ATTRIBUTES
 	private Character character;
-	private Board board = new Board();
-	private Dice dice = new Dice();
+	private Board board;
+	private Dice dice;
 	private Scanner keyboard;
 	private Menu menu;
 

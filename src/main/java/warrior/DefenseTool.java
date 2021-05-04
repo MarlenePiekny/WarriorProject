@@ -2,5 +2,8 @@
 
 public class DefenseTool {
 
-	private int powerDefense;
+	public DefenseTool() {
+		super();
+	}
+	
 }

@@ -2,5 +2,9 @@
 
 public class AttackTool extends Tool {
 	
-	private int powerAttack;
+
+	public AttackTool() {
+		super();
+	}
+
 }
