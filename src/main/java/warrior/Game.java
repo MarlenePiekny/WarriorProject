@@ -10,6 +10,7 @@ public class Game {
 	private Board board = new Board();
 	private Dice dice = new Dice();
 	private Scanner keyboard;
+	private Menu menu;
 
 	// METHODS
 
@@ -18,6 +19,7 @@ public class Game {
 		this.character = playingCharacter;
 		this.board = new Board();
 		this.dice = new Dice();
+		this.menu = new Menu();
 	}
 
 	// SPECIFIC METHODS
@@ -72,7 +74,7 @@ public class Game {
 				board.putCharacterInBoard(character);
 				break;
 			case "exit":
-				Menu.endGame();
+				menu.endGame();
 				break;
 			default:
 				System.out.println("This word doesn't match the choices");

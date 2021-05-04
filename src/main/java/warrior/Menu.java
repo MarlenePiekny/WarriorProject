@@ -175,7 +175,7 @@ public class Menu {
 		System.out.println(character.displayInformation());
 	}
 
-	static public void endGame() {
+	 public void endGame() {
 		System.out.println("You have decided to leave the game, too bad. See you soon!");
 		System.exit(0);
 	}

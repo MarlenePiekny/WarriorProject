@@ -3,6 +3,7 @@
 public class Warrior extends Character {
 	
 	//ATTRIBUTES
+	private String name = "Xena";
 	private AttackTool sword;
 	private DefenseTool shield;
 	
@@ -32,31 +33,7 @@ public class Warrior extends Character {
 				+ "attack strength : " + this.attackStrength;
 	}
 	
-	public void onBoard(Board board) {
-		this.boardSquare = board.getBeginningSquare();
-	}
-	
-	public void moveOnBoard(int move) {
-		this.boardSquare = this.boardSquare + move;
-	}
-	
 	// GETTERS
-
-	public String getName() {
-		return this.name;
-	}
-
-	public String getPictureURL() {
-		return this.pictureURL;
-	}
-
-	public int getLifeLevel() {
-		return this.lifeLevel;
-	}
-
-	public int getAttackStrength() {
-		return this.attackStrength;
-	}
 
 	public AttackTool getSword() {
 		return this.sword;
@@ -65,29 +42,8 @@ public class Warrior extends Character {
 	public DefenseTool getShield() {
 		return this.shield;
 	}
-	
-	public int getBoardSquare() {
-		return this.boardSquare;
-	}
-	
+
 	// SETTERS
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setPictureURL(String pictureURL) {
-		this.pictureURL = pictureURL;
-	}
-
-	public void setLifeLevel(int lifeLevel) {
-		this.lifeLevel = lifeLevel;
-	}
-
-	public void setAttackStrength(int attackStrength) {
-		this.attackStrength = attackStrength;
-	}
-	
 	
 	public void setSword(AttackTool sword) {
 		this.sword = sword;
@@ -96,11 +52,7 @@ public class Warrior extends Character {
 	public void setShield(DefenseTool shield) {
 		this.shield = shield;
 	}
-	
-	public void setBoardSquare(int newBoardSquare) {
-		this.boardSquare = newBoardSquare;
-	}
-	
+
 	// TO STRING
 		@Override
 	public String toString() {

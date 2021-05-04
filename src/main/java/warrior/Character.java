@@ -1,11 +1,11 @@
 
 
-public class Character {
+public abstract class Character {
 	// ATTRIBUTES
 	protected String name;
 	protected String pictureURL = "";
-	protected int lifeLevel = 0;
-	protected int attackStrength = 0;
+	protected int lifeLevel = 5;
+	protected int attackStrength = 5;
 	protected int boardSquare;
 
 	// METHODS
@@ -41,10 +41,7 @@ public class Character {
 
 	// SPECIFIC METHODS
 
-	public String displayInformation() {
-		return "Welcome " + this.name + " ! Here are your info : \n" + "life level : " + this.lifeLevel + "\n"
-				+ "attack strength : " + this.attackStrength;
-	}
+	public abstract String displayInformation();
 
 	public void onBoard(Board board) {
 		this.boardSquare = board.getBeginningSquare();
