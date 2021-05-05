@@ -8,35 +8,20 @@ public class Board {
 	private int numberOfSquares = 64;
 	private int beginningSquare = 1;
 	private String tabBoard[] = new String[numberOfSquares + 1];
-
+	
 	// METHODS
 
 	// CONSTRUCTOR
 	public Board() {
+		this.numberOfSquares = numberOfSquares;
+		this.beginningSquare = beginningSquare;
 		this.tabBoard = tabBoard;
 	};
 
-	// SPECIFIC METHODS
+	//SPECIFIC METHODS
 	
-	public void putCharacterToTheBeginning(Character character) {
-		this.tabBoard[beginningSquare] = character.getName();
-	}
-
-	public void putCharacterInBoard(Character character) throws CharacterOvertakeGameBoardException {
-		if (character.getBoardSquare() > numberOfSquares) {
-			throw new CharacterOvertakeGameBoardException();
-		} else {
-			this.tabBoard[character.getBoardSquare()] = character.getName();
-		}
-		
-	}
-
-	public void removeCharacterInBoard(Character character) {
-		this.tabBoard[character.getBoardSquare()] = null;
-	}
-	
-	public void moveCharacterToTheEnd(Character character) {
-		this.tabBoard[numberOfSquares +1] = character.getName();
+	public void setValueInTabBoard(int index, String valueToPutInBoard) {
+		this.tabBoard[index] = valueToPutInBoard;
 	}
 
 	// GETTERS
@@ -55,7 +40,17 @@ public class Board {
 
 	// SETTERS
 
-	
+	public void setNumberOfSquares(int numberOfSquares) {
+		this.numberOfSquares = numberOfSquares;
+	}
+
+	public void setBeginningSquare(int beginningSquare) {
+		this.beginningSquare = beginningSquare;
+	}
+
+	public void setTabBoard(String[] tabBoard) {
+		this.tabBoard = tabBoard;
+	}
 
 	// TO STRING
 	
@@ -64,4 +59,5 @@ public class Board {
 		return "Board [numberOfSquares=" + numberOfSquares + ", beginningSquare=" + beginningSquare + ", tabBoard="
 				+ Arrays.toString(tabBoard) + "]";
 	}
+
 }
