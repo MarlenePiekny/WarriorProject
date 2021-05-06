@@ -1,5 +1,7 @@
+package warrior.play;
 
 import java.util.Scanner;
+import warrior.character.*;
 
 public class Menu {
 
@@ -20,26 +22,26 @@ public class Menu {
 
 	// SPECIFIC METHODS
 
-	public Character createCharacter() {
+	public Perso createPerso() {
 
-		Character character = null;
+		Perso perso = null;
 
-		// while there isn't any character
-		while (character == null) {
+		// while there isn't any perso
+		while (perso == null) {
 
 			System.out.println(
-					"You will create you first character, chose between warrior and wizard, or exit to leave the game");
-			String inputCharacterChoice = keyboard.nextLine();
+					"You will create you first perso, chose between warrior and wizard, or exit to leave the game");
+			String inputPersoChoice = keyboard.nextLine();
 
-			// Input Character choice
-			switch (inputCharacterChoice) {
+			// Input Perso choice
+			switch (inputPersoChoice) {
 			case "warrior":
 				// create a warrior
-				character = createWarrior();
+				perso = createWarrior();
 				break;
 			case "wizard":
 				// Create a wizard
-				character = createWizard();
+				perso = createWizard();
 				break;
 			case "exit":
 				this.endGame();
@@ -48,10 +50,10 @@ public class Menu {
 				System.out.println("This word doesn't match the choices");
 			}
 		}
-		return character;
+		return perso;
 	}
 
-	public Character menuChoices(Character character) {
+	public Perso menuChoices(Perso perso) {
 
 		while (true) {
 
@@ -61,16 +63,16 @@ public class Menu {
 
 			switch (inputMenuChoice) {
 			case "see":
-				System.out.println(character.displayInformation());
+				System.out.println(perso.displayInformation());
 				break;
 			case "edit":
-				updateCharacter(character);
+				updatePerso(perso);
 				break;
 			case "play":
-				System.out.println("Great! Welcome " + character.getName() + "! Let's play");
-				game = new Game(character);
+				System.out.println("Great! Welcome " + perso.getName() + "! Let's play");
+				game = new Game(perso);
 				game.startGame();
-				return character;
+				return perso;
 			case "exit":
 				this.endGame();
 				break;
@@ -159,20 +161,20 @@ public class Menu {
 		return wizard;
 	}
 
-	public void updateCharacter(Character character) {
-		System.out.println("You will customize your character : \n" + "Please enter his/her name");
-		String inputCharacterName = keyboard.nextLine();
-		character.setName(inputCharacterName);
+	public void updatePerso(Perso perso) {
+		System.out.println("You will customize your perso : \n" + "Please enter his/her name");
+		String inputPersoName = keyboard.nextLine();
+		perso.setName(inputPersoName);
 
 		System.out.println("Please enter his/her life level : ");
-		int inputCharacterLifeLevel = keyboard.nextInt();
-		character.setLifeLevel(inputCharacterLifeLevel);
+		int inputPersoLifeLevel = keyboard.nextInt();
+		perso.setLifeLevel(inputPersoLifeLevel);
 
 		System.out.println("Please enter his/her attack strength : ");
-		int inputCharacterAttackStrength = keyboard.nextInt();
-		character.setAttackStrength(inputCharacterAttackStrength);
+		int inputPersoAttackStrength = keyboard.nextInt();
+		perso.setAttackStrength(inputPersoAttackStrength);
 
-		System.out.println(character.displayInformation());
+		System.out.println(perso.displayInformation());
 	}
 
 	 public void endGame() {

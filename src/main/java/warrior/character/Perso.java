@@ -1,6 +1,8 @@
+package warrior.character;
+import warrior.tool.*;
+import warrior.play.*;
 
-
-public abstract class Character {
+public abstract class Perso {
 	// ATTRIBUTES
 	protected String name;
 	protected String pictureURL = "";
@@ -15,7 +17,7 @@ public abstract class Character {
 	// CONSTRUCTOR
 
 	// character constructor without any input
-	public Character() {
+	public Perso() {
 		this.name = name;
 		this.pictureURL = pictureURL;
 		this.lifeLevel = lifeLevel;
@@ -26,7 +28,7 @@ public abstract class Character {
 	}
 
 	// character constructor with name
-	public Character(String inputName) {
+	public Perso(String inputName) {
 		this.name = inputName;
 		this.pictureURL = pictureURL;
 		this.lifeLevel = lifeLevel;
@@ -37,7 +39,7 @@ public abstract class Character {
 	}
 
 	// character constructor with 4 inputs
-	public Character(String inputName, String inputPicture, int inputLifeLevel, int inputAttackStrength) {
+	public Perso(String inputName, String inputPicture, int inputLifeLevel, int inputAttackStrength) {
 		this.name = inputName;
 		this.pictureURL = inputPicture;
 		this.lifeLevel = inputLifeLevel;

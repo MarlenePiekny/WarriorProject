@@ -1,4 +1,6 @@
-
+package warrior;
+import warrior.play.*;
+import warrior.character.*;
 
 public class Launch {
 
@@ -11,10 +13,10 @@ public class Launch {
 		Menu menu = new Menu();
 		
 		//Create a character
-		Character character = menu.createCharacter();
+		Perso perso= menu.createPerso();
 		
 		//Chose an option in the menu
-		menu.menuChoices(character);
+		menu.menuChoices(perso);
 
 	}
 

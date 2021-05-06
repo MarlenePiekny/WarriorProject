@@ -1,8 +1,9 @@
-
+package warrior.square;
 
 public class Empty extends Square {
 	
 	//ATTRIBUTES
+	String name = "Empty square";
 	
 	//METHODS
 		

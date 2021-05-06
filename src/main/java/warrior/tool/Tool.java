@@ -1,4 +1,5 @@
-
+package warrior.tool;
+import warrior.square.*;
 
 public class Tool extends Square {
 

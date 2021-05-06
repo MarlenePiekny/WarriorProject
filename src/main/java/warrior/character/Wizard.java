@@ -1,6 +1,7 @@
+package warrior.character;
+import warrior.tool.*;
 
-
-public class Wizard extends Character {
+public class Wizard extends Perso {
 
 	// ATTRIBUTES
 	private String name = "Merlin";

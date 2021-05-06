@@ -1,3 +1,4 @@
+package warrior.play;
 
 import java.util.Random;
 

@@ -1,13 +1,14 @@
+package warrior.square;
 
-
-public class Enemy extends Square {
+public class Surprise extends Square {
 	
 	//ATTRIBUTES
+	String name = "Surprise";
 	
 		//METHODS
 			
 			//CONSTRUCTOR
-			public Enemy() {
+			public Surprise() {
 				super();
 			}
 		

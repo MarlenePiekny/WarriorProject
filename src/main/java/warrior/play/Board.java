@@ -1,5 +1,8 @@
+package warrior.play;
 
 import java.util.ArrayList;
+import warrior.square.*;
+import warrior.tool.*;
 
 public class Board {
 

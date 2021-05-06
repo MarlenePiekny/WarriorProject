@@ -1,6 +1,7 @@
+package warrior.character;
+import warrior.tool.*;
 
-
-public class Warrior extends Character {
+public class Warrior extends Perso {
 	
 	//ATTRIBUTES
 	private String name = "Xena";

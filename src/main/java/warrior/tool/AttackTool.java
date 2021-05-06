@@ -1,4 +1,4 @@
-
+package warrior.tool;
 
 public class AttackTool extends Tool {
 	
