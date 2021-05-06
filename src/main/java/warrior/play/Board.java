@@ -1,27 +1,34 @@
 package warrior.play;
 
-import java.util.ArrayList;
+import java.util.*;
 import warrior.square.*;
 import warrior.tool.*;
+import warrior.enemy.*;
+
 
 public class Board {
 
 	// ATTRIBUTES
-	private int numberOfSquares = 4;
-	private int beginningSquare = 1;
-	private ArrayList<Square> tabBoard = new ArrayList<Square>();
+	private int numberOfSquares;
+	private int beginningSquare;
+	private ArrayList<Square> tabBoard;
 
 	// METHODS
 
 	// CONSTRUCTOR
 	public Board() {
-		this.numberOfSquares = numberOfSquares;
-		this.beginningSquare = beginningSquare;
+		this.numberOfSquares = 65;
+		this.beginningSquare = 0;
+		this.tabBoard = new ArrayList<Square>();
 		this.tabBoard.add(new Empty());
-		this.tabBoard.add(new Enemy());
-		this.tabBoard.add(new AttackTool());
-		this.tabBoard.add(new DefenseTool());
-
+		this.tabBoard.add(new Dragon());
+		this.tabBoard.add(new LargePotion());
+		this.tabBoard.add(new Sword());
+		this.tabBoard.add(new Club());
+		this.tabBoard.add(new Goblin());
+		this.tabBoard.add(new Fireball());
+		this.tabBoard.add(new Lightning());
+		this.tabBoard.add(new Sorcerer());
 	};
 
 	// SPECIFIC METHODS
@@ -45,12 +52,10 @@ public class Board {
 		return tabBoard.get(index);
 	}
 	
-	
-	
-	
-	/*
-	 * public String getTabBoard() { return ArrayList.toString(tabBoard); }
-	 */
+	public ArrayList<Square> getTabBoard() {
+		return tabBoard;
+	}
+	 
 
 	// SETTERS
 
@@ -67,7 +72,8 @@ public class Board {
 	@Override
 	public String toString() {
 		return "Board [numberOfSquares=" + numberOfSquares + ", beginningSquare=" + beginningSquare + ", tabBoard="
-				+ ArrayList.toString(tabBoard) + "]";
+				+ tabBoard + "]";
 	}
+	
 
 }

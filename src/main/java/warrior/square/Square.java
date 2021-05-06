@@ -15,13 +15,7 @@ public abstract class Square {
 		
 		//SPECIFIC METHODS
 		
-		public abstract void nothingHappens();
-		
-		public abstract Perso fight(Perso perso);
-		
-		public abstract Perso giveAttackTool(Perso perso);
-		
-		public abstract Perso giveDefenseTool(Perso perso);
+		public abstract Perso interaction(Perso perso);
 		
 	
 		//GETTER

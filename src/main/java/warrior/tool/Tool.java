@@ -1,18 +1,20 @@
 package warrior.tool;
 import warrior.square.*;
 
-public class Tool extends Square {
+public abstract class Tool extends Surprise {
 
 	// ATTRIBUTES
-	protected String name;
-	protected int power;
+	private String name;
 
 	// METHODS
 
 	// CONSTRUCTOR
-	public void Tool() {
-		this.name = name;
-		this.power = power;
+	public Tool() {
+		this.name = "";
+	}
+	
+	public Tool(String inputName) {
+		this.name = inputName;
 	}
 
 	// SPECIFIC METHODS
@@ -22,23 +24,15 @@ public class Tool extends Square {
 		return name;
 	}
 
-	public int getPower() {
-		return power;
-	}
-
 	// SETTERS
 	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public void setPower(int power) {
-		this.power = power;
+		this.name= name;
 	}
 
 	// TO STRING
 	@Override
 	public String toString() {
-		return "Tool [name=" + name + ", power=" + power + "]";
+		return "Tool [name=" + name + "]";
 	}
 	
 }

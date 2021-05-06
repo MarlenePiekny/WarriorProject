@@ -3,29 +3,30 @@ package warrior.play;
 import java.util.Scanner;
 import warrior.character.*;
 import warrior.exception.*;
+import warrior.square.Square;
 
 //GAME START
 
 public class Game {
 
 	// ATTRIBUTES
-	private Board board = new Board();
-	private Dice dice = new Dice();
-	private Scanner keyboard = new Scanner(System.in); ;
-	private Menu menu = new Menu();
+	private Board board;
+	private Dice dice;
+	private Scanner keyboard;
+	private Menu menu;
 	private Perso perso;
-	private int persoSquare = 1; //in our case called with perso.getBoardSquare()
+	private int persoSquare;
 
 	// METHODS
 
 	// CONSTRUCTOR
 	public Game(Perso playingPerso) {
-		this.board = board;
-		this.dice = dice;
-		this.keyboard = keyboard;
-		this.menu = menu;
+		this.board  = new Board();
+		this.dice = new Dice();
+		this.keyboard  = new Scanner(System.in);
+		this.menu = new Menu();
 		this.perso = playingPerso;
-		this.persoSquare = persoSquare;
+		this.persoSquare = 0;
 	}
 
 	// SPECIFIC METHODS
@@ -40,15 +41,20 @@ public class Game {
 		// Remind to the perso his/her place on the board
 		System.out.println(perso.getName());
 		System.out.println("Square " + persoSquare + " / " + board.getNumberOfSquare());
+		
+		System.out.println("Tableau" + board.getTabBoard());
 
 		while (persoSquare < board.getNumberOfSquare()) {
 
 			turnToPlay(perso);
 		}
+		System.out.println("Congrats " + perso.getName() + " you have completed the Warrior and Wizard game");
+		
 		return perso;
 	}
 
 	public Perso turnToPlay(Perso perso) {
+		
 		// display the board
 		//System.out.println(board.getTabBoard());
 
@@ -64,7 +70,6 @@ public class Game {
 			System.out.println("Dice result : " + diceResult);
 
 			// Remove the perso from his/her current square
-			
 
 			// Move the perso to the appropriated square
 
@@ -74,26 +79,24 @@ public class Game {
 				perso.moveOnBoard(diceResult);
 				
 				persoSquare = movePersoOnBoard(diceResult);
-
 				
 
 			} catch (PersoOvertakeGameBoardException e) {
 
 				System.out.println(e.getMessage());
 
-				// the perso will overtake the game board, move the perso to the end of
-				// the game board
+				// the perso will overtake the game board, move the perso to the end of the game board
 				perso.setBoardSquare(board.getNumberOfSquare());
 				persoSquare = board.getNumberOfSquare();
-
-				// Actualization of the board
-				//movePersoToTheEnd(perso); TO DELETE IF WORKING
+				
 			}
 
 			// Display the square of the perso
 			System.out.println("Square " + persoSquare + " / " + board.getNumberOfSquare());
 			
 			//Check what is in the square
+			Square square = board.getSquareInTabBoard(persoSquare);
+			System.out.println( square.toString() );
 			
 
 			break;

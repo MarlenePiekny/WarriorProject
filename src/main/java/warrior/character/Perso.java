@@ -4,13 +4,13 @@ import warrior.play.*;
 
 public abstract class Perso {
 	// ATTRIBUTES
-	protected String name;
-	protected String pictureURL = "";
-	protected int lifeLevel = 5;
-	protected int attackStrength = 5;
-	protected AttackTool attackTool;
-	protected DefenseTool defenseTool;
-	protected int boardSquare;
+	private String name;
+	private String pictureURL;
+	private int lifeLevel;
+	private int attackStrength;
+	private AttackTool attackTool;
+	private DefenseTool defenseTool;
+	private int boardSquare;
 
 	// METHODS
 
@@ -18,35 +18,28 @@ public abstract class Perso {
 
 	// character constructor without any input
 	public Perso() {
-		this.name = name;
-		this.pictureURL = pictureURL;
-		this.lifeLevel = lifeLevel;
-		this.attackStrength = attackStrength;
-		this.attackTool = attackTool;
-		this.defenseTool = defenseTool;
-		this.boardSquare = boardSquare;
+		this.name = "";
+		this.pictureURL = "";
+		this.lifeLevel = 5;
+		this.attackStrength = 5;
+		this.attackTool = null;
+		this.defenseTool = null;
+		this.boardSquare = 0;
 	}
 
 	// character constructor with name
 	public Perso(String inputName) {
+		this();
 		this.name = inputName;
-		this.pictureURL = pictureURL;
-		this.lifeLevel = lifeLevel;
-		this.attackStrength = attackStrength;
-		this.attackTool = attackTool;
-		this.defenseTool = defenseTool;
-		this.boardSquare = boardSquare;
 	}
 
 	// character constructor with 4 inputs
 	public Perso(String inputName, String inputPicture, int inputLifeLevel, int inputAttackStrength) {
+		this();
 		this.name = inputName;
 		this.pictureURL = inputPicture;
 		this.lifeLevel = inputLifeLevel;
 		this.attackStrength = inputAttackStrength;
-		this.attackTool = attackTool;
-		this.defenseTool = defenseTool;
-		this.boardSquare = boardSquare;
 	}
 
 	// SPECIFIC METHODS
@@ -125,7 +118,7 @@ public abstract class Perso {
 	
 	@Override
 	public String toString() {
-		return "Character [name=" + name + ", pictureURL=" + pictureURL + ", lifeLevel=" + lifeLevel
+		return "Perso [name=" + name + ", pictureURL=" + pictureURL + ", lifeLevel=" + lifeLevel
 				+ ", attackStrength=" + attackStrength + ", attackTool=" + attackTool + ", defenseTool=" + defenseTool
 				+ ", boardSquare=" + boardSquare + "]";
 	}

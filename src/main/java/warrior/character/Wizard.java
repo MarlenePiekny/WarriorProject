@@ -4,14 +4,13 @@ import warrior.tool.*;
 public class Wizard extends Perso {
 
 	// ATTRIBUTES
-	private String name = "Merlin";
 	private AttackTool spell;
 	private DefenseTool philter;
 
 
 	//Wizard constructor without any input
 	public Wizard() {
-	
+		super("Merlin");
 	}
 
 	//Wizard constructor with name 
@@ -26,13 +25,13 @@ public class Wizard extends Perso {
 
 	 //SPECIFIC METHODS
 	
-	 public String displayInformation() { return "Welcome " + this.name +
-	 " you are a wizard! Here are your info : \n" + "life level : " +
-	 this.lifeLevel + "\n" + "attack strength : " + this.attackStrength; }
+	 public String displayInformation() {
+		 return "Welcome " + this.getName() + " you are a wizard! Here are your info : \n" + "life level : " + this.getLifeLevel() + 
+				 "\n" + "attack strength : " + this.getAttackStrength();
+	 }
 
 	 // GETTERS
 	 
-	
 	public AttackTool getSpell() {
 		return this.spell;
 	}
@@ -54,8 +53,8 @@ public class Wizard extends Perso {
 	// TO STRING
 	@Override
 	public String toString() {
-		return "Wizard [name=" + this.name + ", pictureURL=" + this.pictureURL + ", lifeLevel=" + this.lifeLevel
-				+ ", attackStrength=" + this.attackStrength + ", spell=" + this.spell + ", philter=" + this.philter
+		return "Wizard [name=" + this.getName() + ", pictureURL=" + this.getPictureURL() + ", lifeLevel=" + this.getLifeLevel()
+				+ ", attackStrength=" + this.getAttackStrength() + ", spell=" + this.getSpell() + ", philter=" + this.getPhilter()
 				+ "]";
 	}
 

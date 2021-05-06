@@ -4,7 +4,6 @@ import warrior.tool.*;
 public class Warrior extends Perso {
 	
 	//ATTRIBUTES
-	private String name = "Xena";
 	private AttackTool sword;
 	private DefenseTool shield;
 	
@@ -13,7 +12,7 @@ public class Warrior extends Perso {
 	//CONSTRUCTOR
 	//Warrior constructor without any input
 	public Warrior() {
-
+		super("Xena");
 	}
 	
 	//Warrior constructor with name
@@ -29,9 +28,9 @@ public class Warrior extends Perso {
 	//SPECIFIC METHODS
 	
 	public String displayInformation() {
-		return "Welcome " + this.name + " you are a warrior! Here are your info : \n"
-				+ "life level : " + this.lifeLevel + "\n"
-				+ "attack strength : " + this.attackStrength;
+		return "Welcome " + this.getName() + " you are a warrior! Here are your info : \n"
+				+ "life level : " + this.getLifeLevel() + "\n"
+				+ "attack strength : " + this.getAttackStrength();
 	}
 	
 	// GETTERS
@@ -57,9 +56,9 @@ public class Warrior extends Perso {
 	// TO STRING
 		@Override
 	public String toString() {
-			return "Warrior [name= " + this.name + "pictureURL= " + this.pictureURL + "lifeLevel= " + this.lifeLevel + 
-					"attackStrength= " + this.attackStrength + "sword= " + this.sword + "shield= " + this.shield +
-					"square board= " + this.boardSquare + "]";
+			return "Warrior [name= " + this.getName() + "pictureURL= " + this.getPictureURL() + "lifeLevel= " + this.getLifeLevel() + 
+					"attackStrength= " + this.getAttackStrength() + "sword= " + this.sword + "shield= " + this.getShield() +
+					"square board= " + this.getBoardSquare() + "]";
 		}
 
 }
