@@ -24,6 +24,10 @@ public class Dice {
 		return diceResult;
 	}
 	
+	public int throwTrickDie() {
+		return 1;
+	}
+	
 	//GETTERS
 	
 	public int getNumberOfSides() {

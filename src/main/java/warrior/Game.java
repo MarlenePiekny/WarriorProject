@@ -11,7 +11,7 @@ public class Game {
 	private Scanner keyboard = new Scanner(System.in); ;
 	private Menu menu = new Menu();
 	private Character character;
-	private int characterSquare = 1;
+	private int characterSquare = 1; //in our case called with character.getBoardSquare()
 
 	// METHODS
 
@@ -32,13 +32,13 @@ public class Game {
 
 		// Place the character on the first square
 		character.onBoard(board);
-		putCharacterToTheBeginning(character);
+		//putCharacterToTheBeginning(character);
 
 		// Remind to the character his/her place on the board
 		System.out.println(character.getName());
-		System.out.println("Square " + character.getBoardSquare() + " / " + board.getNumberOfSquare());
+		System.out.println("Square " + characterSquare + " / " + board.getNumberOfSquare());
 
-		while (character.getBoardSquare() < board.getNumberOfSquare()) {
+		while (characterSquare < board.getNumberOfSquare()) {
 
 			turnToPlay(character);
 		}
@@ -47,7 +47,7 @@ public class Game {
 
 	public Character turnToPlay(Character character) {
 		// display the board
-		System.out.println(board.getTabBoard());
+		//System.out.println(board.getTabBoard());
 
 		// Ask the character to throw the dice
 		System.out.println("Enter dice to continue to play or exit to leave the game");
@@ -57,23 +57,22 @@ public class Game {
 		case "dice":
 			// Throw the dice
 			System.out.println("You throw the dice");
-			int diceResult = dice.throwDice();
-
+			int diceResult = dice.throwTrickDie();
 			System.out.println("Dice result : " + diceResult);
 
 			// Remove the character from his/her current square
-			removeCharacterInBoard(character);
+
 
 			// Move the character to the appropriated square
 
 			try {
 
-				// the character will remain on the game board, move the character with the dice
-				// result
+				// the character will remain on the game board, move the character with the dice result
 				character.moveOnBoard(diceResult);
+				
+				characterSquare = moveCharacterOnBoard(diceResult);
 
-				// Actualization of the board
-				putCharacterInBoard(character);
+				
 
 			} catch (CharacterOvertakeGameBoardException e) {
 
@@ -82,13 +81,17 @@ public class Game {
 				// the character will overtake the game board, move the character to the end of
 				// the game board
 				character.setBoardSquare(board.getNumberOfSquare());
+				characterSquare = board.getNumberOfSquare();
 
 				// Actualization of the board
-				moveCharacterToTheEnd(character);
+				//moveCharacterToTheEnd(character); TO DELETE IF WORKING
 			}
 
 			// Display the square of the character
-			System.out.println("Square " + character.getBoardSquare() + " / " + board.getNumberOfSquare());
+			System.out.println("Square " + characterSquare + " / " + board.getNumberOfSquare());
+			
+			//Check what is in the square
+			
 
 			break;
 		case "exit":
@@ -102,6 +105,18 @@ public class Game {
 	
 	// METHOD TO MOVE THE CHARACTER ON THE BOARD
 	
+		public int moveCharacterOnBoard(int diceResult) throws CharacterOvertakeGameBoardException {
+			if (characterSquare + diceResult > board.getNumberOfSquare()) {
+				throw new CharacterOvertakeGameBoardException();
+			} else {
+				//board.setValueInTabBoard(characterSquare, character.getName() );
+				characterSquare += diceResult;
+			}
+		return characterSquare;
+		}
+	
+	
+		/*
 		public void putCharacterToTheBeginning(Character character) {
 			board.setValueInTabBoard(board.getBeginningSquare(), character.getName() );
 		}
@@ -122,5 +137,6 @@ public class Game {
 		public void moveCharacterToTheEnd(Character character) {
 			board.setValueInTabBoard(board.getNumberOfSquare(), character.getName() );
 		}
+		*/
 	
 }

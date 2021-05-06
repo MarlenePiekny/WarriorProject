@@ -1,28 +1,32 @@
 
-
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Board {
 
 	// ATTRIBUTES
-	private int numberOfSquares = 64;
+	private int numberOfSquares = 4;
 	private int beginningSquare = 1;
-	private String tabBoard[] = new String[numberOfSquares + 1];
-	
+	private ArrayList<Square> tabBoard = new ArrayList<Square>();
+
 	// METHODS
 
 	// CONSTRUCTOR
 	public Board() {
 		this.numberOfSquares = numberOfSquares;
 		this.beginningSquare = beginningSquare;
-		this.tabBoard = tabBoard;
+		this.tabBoard.add(new Empty());
+		this.tabBoard.add(new Enemy());
+		this.tabBoard.add(new AttackTool());
+		this.tabBoard.add(new DefenseTool());
+
 	};
 
-	//SPECIFIC METHODS
-	
-	public void setValueInTabBoard(int index, String valueToPutInBoard) {
-		this.tabBoard[index] = valueToPutInBoard;
-	}
+	// SPECIFIC METHODS
+	/*
+	public void setSquareInTabBoard(Square square) {
+		this.tabBoard.add( square)
+	 }
+	 */
 
 	// GETTERS
 
@@ -33,10 +37,17 @@ public class Board {
 	public int getBeginningSquare() {
 		return this.beginningSquare;
 	}
-
-	public String getTabBoard() {
-		return Arrays.toString(tabBoard);
+	
+	public Square getSquareInTabBoard(int index) {
+		return tabBoard.get(index);
 	}
+	
+	
+	
+	
+	/*
+	 * public String getTabBoard() { return ArrayList.toString(tabBoard); }
+	 */
 
 	// SETTERS
 
@@ -48,16 +59,12 @@ public class Board {
 		this.beginningSquare = beginningSquare;
 	}
 
-	public void setTabBoard(String[] tabBoard) {
-		this.tabBoard = tabBoard;
-	}
-
 	// TO STRING
-	
+
 	@Override
 	public String toString() {
 		return "Board [numberOfSquares=" + numberOfSquares + ", beginningSquare=" + beginningSquare + ", tabBoard="
-				+ Arrays.toString(tabBoard) + "]";
+				+ ArrayList.toString(tabBoard) + "]";
 	}
 
 }

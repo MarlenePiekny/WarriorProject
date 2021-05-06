@@ -1,6 +1,6 @@
 
 
-public class DefenseTool {
+public class DefenseTool extends Tool {
 
 	public DefenseTool() {
 		super();

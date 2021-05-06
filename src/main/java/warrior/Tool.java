@@ -1,6 +1,6 @@
 
 
-public class Tool {
+public class Tool extends Square {
 
 	// ATTRIBUTES
 	protected String name;
