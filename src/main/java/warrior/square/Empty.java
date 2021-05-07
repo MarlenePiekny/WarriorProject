@@ -1,4 +1,5 @@
-package warrior.square;
+package square;
+import character.*;
 
 public class Empty extends Square {
 	

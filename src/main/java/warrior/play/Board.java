@@ -1,9 +1,9 @@
-package warrior.play;
+package play;
 
 import java.util.*;
-import warrior.square.*;
-import warrior.tool.*;
-import warrior.enemy.*;
+import square.*;
+import tool.*;
+import enemy.*;
 
 
 public class Board {
@@ -17,7 +17,7 @@ public class Board {
 
 	// CONSTRUCTOR
 	public Board() {
-		this.numberOfSquares = 65;
+		this.numberOfSquares = 64;
 		this.beginningSquare = 0;
 		this.tabBoard = new ArrayList<Square>();
 		this.tabBoard.add(new Empty());

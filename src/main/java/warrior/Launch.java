@@ -1,6 +1,6 @@
-package warrior;
-import warrior.play.*;
-import warrior.character.*;
+
+import play.*;
+import character.*;
 
 public class Launch {
 
@@ -21,3 +21,4 @@ public class Launch {
 	}
 
 }
+

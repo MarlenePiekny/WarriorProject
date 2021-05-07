@@ -1,4 +1,4 @@
-package warrior.exception;
+package exception;
 
 public class PersoOvertakeGameBoardException extends Exception {
 	

@@ -1,7 +1,7 @@
-package warrior.play;
+package play;
 
 import java.util.Scanner;
-import warrior.character.*;
+import character.*;
 
 public class Menu {
 

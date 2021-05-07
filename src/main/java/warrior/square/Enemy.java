@@ -1,6 +1,6 @@
-package warrior.square;
+package square;
 
-import warrior.character.Perso;
+import character.Perso;
 
 public abstract class Enemy extends Square {
 	

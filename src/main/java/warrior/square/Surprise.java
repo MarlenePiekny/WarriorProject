@@ -1,4 +1,4 @@
-package warrior.square;
+package square;
 
 public class Surprise extends Square {
 	

@@ -1,5 +1,5 @@
-package warrior.tool;
-import warrior.square.*;
+package tool;
+import square.*;
 
 public abstract class Tool extends Surprise {
 

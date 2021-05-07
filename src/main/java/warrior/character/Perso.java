@@ -1,6 +1,6 @@
-package warrior.character;
-import warrior.tool.*;
-import warrior.play.*;
+package character;
+import tool.*;
+import play.*;
 
 public abstract class Perso {
 	// ATTRIBUTES

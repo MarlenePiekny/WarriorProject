@@ -1,5 +1,5 @@
-package warrior.enemy;
-import warrior.square.*;
+package enemy;
+import square.*;
 
 public class Dragon extends Enemy{
 	

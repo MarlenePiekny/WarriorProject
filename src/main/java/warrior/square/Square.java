@@ -1,5 +1,5 @@
-package warrior.square;
-import warrior.character.*;
+package square;
+import character.*;
 
 public abstract class Square {
 	

@@ -1,9 +1,9 @@
-package warrior.play;
+package play;
 
 import java.util.Scanner;
-import warrior.character.*;
-import warrior.exception.*;
-import warrior.square.Square;
+import character.*;
+import exception.*;
+import square.Square;
 
 //GAME START
 

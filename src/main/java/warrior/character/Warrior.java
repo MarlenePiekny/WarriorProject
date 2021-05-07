@@ -1,5 +1,5 @@
-package warrior.character;
-import warrior.tool.*;
+package character;
+import tool.*;
 
 public class Warrior extends Perso {
 	
