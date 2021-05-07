@@ -25,7 +25,17 @@ public abstract class Enemy extends Square {
 			}
 
 			//SPECIFIC METHOD
-			public abstract Perso interaction(Perso perso);
+			@Override
+			public Perso interaction(Perso perso) {
+				return perso;
+			}
+			
+			@Override
+			public String displaySquareInformations() {
+				return "You have reached a square where there is a " + getName() + 
+						"\n Life level : " + getLifeLevel() +
+						"\n Attack strength : " + getLifeLevel();
+			}
 
 		
 			//GETTERS

@@ -3,7 +3,8 @@ package play;
 import java.util.Scanner;
 import character.*;
 import exception.*;
-import square.Square;
+import square.*;
+import tool.*;
 
 //GAME START
 
@@ -67,17 +68,12 @@ public class Game {
 			// Throw the dice
 			System.out.println("You throw the dice");
 			int diceResult = dice.throwTrickDie();
-			System.out.println("Dice result : " + diceResult);
-
-			// Remove the perso from his/her current square
-
-			// Move the perso to the appropriated square
+			System.out.println("Dice result : " + diceResult);		
 
 			try {
-
 				// the perso will remain on the game board, move the perso with the dice result
 				perso.moveOnBoard(diceResult);
-				
+				// Move the perso to the appropriated square
 				persoSquare = movePersoOnBoard(diceResult);
 				
 
@@ -87,16 +83,41 @@ public class Game {
 
 				// the perso will overtake the game board, move the perso to the end of the game board
 				perso.setBoardSquare(board.getNumberOfSquare());
+				// Move the perso to the appropriated square
 				persoSquare = board.getNumberOfSquare();
 				
 			}
+			
 
-			// Display the square of the perso
+			// Display the number of the square where the perso is
 			System.out.println("Square " + persoSquare + " / " + board.getNumberOfSquare());
 			
 			//Check what is in the square
 			Square square = board.getSquareInTabBoard(persoSquare);
 			System.out.println( square.toString() );
+			System.out.println( square.displaySquareInformations() );
+			
+			if (square instanceof Empty) {
+				//The square is empty, nothing happen
+				nothingHappens();
+				
+				
+			} else if (square instanceof Enemy ) {
+				//The square contains an enemy, you fight with it
+				fightWith();
+				
+				
+			} else if (square instanceof Surprise ) {
+				//The square contains a surprise
+				getEquippedWithTool();
+				
+				
+			} else {
+				System.out.println("Aouch, this case shouldn't happen");
+				
+				
+			}
+			
 			
 
 			break;
@@ -109,7 +130,7 @@ public class Game {
 		return perso;
 	}
 	
-	// METHOD TO MOVE THE CHARACTER ON THE BOARD
+		// METHOD TO MOVE THE CHARACTER ON THE BOARD
 	
 		public int movePersoOnBoard(int diceResult) throws PersoOvertakeGameBoardException {
 			if (persoSquare + diceResult > board.getNumberOfSquare()) {
@@ -120,7 +141,22 @@ public class Game {
 			}
 		return persoSquare;
 		}
-	
+		
+		
+		//METHOD TO DO NOTHING WHEN EMPTY SQUARE
+		public void nothingHappens() {
+			System.out.println("Everything is fine, nothing happens");
+		}
+		
+		//METHOD TO FIGHT WITH AN ENEMY
+		public void fightWith() {
+			System.out.println("You fight with an enemy");
+		}
+		
+		//METHOD TO EQUIP THE PERSO IN A SURPRISE SQUARE
+		public void getEquippedWithTool() {
+			System.out.println("You get equiped with a tool");
+		}
 	
 		/*
 		public void putPersoToTheBeginning(Perso perso) {

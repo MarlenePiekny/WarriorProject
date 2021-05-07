@@ -1,9 +1,10 @@
 package square;
 
-public class Surprise extends Square {
+import character.Perso;
+
+public abstract class Surprise extends Square {
 	
 	//ATTRIBUTES
-	String name = "Surprise";
 	
 		//METHODS
 			
@@ -13,6 +14,9 @@ public class Surprise extends Square {
 			}
 
 			//SPECIFIC METHOD
+			public abstract Perso interaction(Perso perso);
+			
+			public abstract String displaySquareInformations();
 		
 			//GETTERS
 			public String getName() {

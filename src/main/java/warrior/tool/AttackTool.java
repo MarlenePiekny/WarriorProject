@@ -1,6 +1,8 @@
 package tool;
 
-public class AttackTool extends Tool {
+import character.Perso;
+
+public abstract class AttackTool extends Tool {
 	
 	//ATTRIBUTES
 	private int bonusAttackStrength;
@@ -20,6 +22,14 @@ public class AttackTool extends Tool {
 		}
 
 		//SPECIFIC METHOD
+		public abstract Perso interaction(Perso perso);
+		
+		@Override
+		public String displaySquareInformations() {
+			return "You have reached a square where there is a " + getName() + 
+					"\n Bonus attack strength ; " + getBonusAttackStrength();
+		}
+		
 		
 		//GETTERS
 		public int getBonusAttackStrength() {

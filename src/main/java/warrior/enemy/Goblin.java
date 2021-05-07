@@ -13,11 +13,16 @@ public class Goblin extends Enemy{
 			}
 
 			//SPECIFIC METHOD
-			
+
 			//GETTERS
 			
 			//SETTERS
 			
 			//TO STRING
+			@Override
+			public String toString() {
+				return "Goblin [name=" + getName() + ", getLifeLevel()=" + getLifeLevel() + ", getAttackStrength()="
+						+ getAttackStrength() + "]";
+			}
 
 }

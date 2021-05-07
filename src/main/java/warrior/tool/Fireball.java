@@ -18,7 +18,6 @@ public class Fireball extends Spell {
 				//SETTERS
 				
 				//TO STRING
-				//TO STRING
 				@Override
 				public String toString() {
 					return "Fireball [name= " + this.getName() + ", bonusAttackStrength=" + this.getBonusAttackStrength() + "]";

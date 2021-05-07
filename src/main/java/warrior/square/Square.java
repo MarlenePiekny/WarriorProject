@@ -10,12 +10,14 @@ public abstract class Square {
 	
 		//CONSTRUCTOR
 		public Square() {
-			this.name = name;
+			this.name = "";
 		}
 		
 		//SPECIFIC METHODS
 		
 		public abstract Perso interaction(Perso perso);
+		
+		public abstract String displaySquareInformations();
 		
 	
 		//GETTER

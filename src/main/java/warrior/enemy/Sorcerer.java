@@ -4,9 +4,6 @@ import square.*;
 public class Sorcerer extends Enemy{
 
 	//ATTRIBUTES
-	private String name;
-	private int lifeLevel;
-	private int attackStrength;
 	
 		//METHODS
 			
@@ -16,11 +13,16 @@ public class Sorcerer extends Enemy{
 			}
 
 			//SPECIFIC METHOD
-			
+
 			//GETTERS
 			
 			//SETTERS
 			
 			//TO STRING
+			@Override
+			public String toString() {
+				return "Sorcerer [getName()=" + getName() + ", getLifeLevel()=" + getLifeLevel()
+						+ ", getAttackStrength()=" + getAttackStrength() + "]";
+			}
 			
 }

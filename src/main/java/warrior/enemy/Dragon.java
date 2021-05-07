@@ -14,11 +14,16 @@ public class Dragon extends Enemy{
 		}
 
 		//SPECIFIC METHOD
-		
+	
 		//GETTERS
 		
 		//SETTERS
 	
 		//TO STRING
+		@Override
+		public String toString() {
+			return "Dragon [getName()=" + getName() + ", getLifeLevel()=" + getLifeLevel() + ", getAttackStrength()="
+					+ getAttackStrength() + "]";
+		}
 
 }

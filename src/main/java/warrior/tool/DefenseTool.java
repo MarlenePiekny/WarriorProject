@@ -1,6 +1,8 @@
 package tool;
 
-public class DefenseTool extends Tool {
+import character.Perso;
+
+public abstract class DefenseTool extends Tool {
 
 	//ATTRIBUTES
 		private int bonusLifeLevel;
@@ -19,6 +21,13 @@ public class DefenseTool extends Tool {
 			}
 
 			//SPECIFIC METHOD
+			public abstract Perso interaction(Perso perso);
+			
+			@Override
+			public String displaySquareInformations() {
+				return "You have reached a square where there is a " + getName() + 
+						"\n Bonus attack strength ; " + getBonusLifeLevel();
+			}	
 			
 			//GETTERS
 			public int getBonusLifeLevel() {
