@@ -1,6 +1,6 @@
 package tool;
 
-public class Sword extends AttackTool{
+public class Sword extends Weapon {
 
 	//ATTRIBUTES
 	
@@ -18,5 +18,8 @@ public class Sword extends AttackTool{
 			//SETTERS
 			
 			//TO STRING
-
+			@Override
+			public String toString() {
+				return "Sword [name= " + this.getName() + ", bonusAttackStrength=" + this.getBonusAttackStrength() + "]";
+			}
 }

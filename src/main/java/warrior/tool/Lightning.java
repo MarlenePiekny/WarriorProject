@@ -1,6 +1,6 @@
 package tool;
 
-public class Lightning extends AttackTool{
+public class Lightning extends Spell {
 
 	//ATTRIBUTES
 	
@@ -18,5 +18,8 @@ public class Lightning extends AttackTool{
 			//SETTERS
 			
 			//TO STRING
-		
+			@Override
+			public String toString() {
+				return "Lightning [name= " + this.getName() + ", bonusAttackStrength=" + this.getBonusAttackStrength() + "]";
+			}
 }

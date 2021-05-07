@@ -1,6 +1,6 @@
 package tool;
 
-public class Club extends AttackTool{
+public class Club extends Weapon {
 
 	//ATTRIBUTES
 	
@@ -18,5 +18,9 @@ public class Club extends AttackTool{
 			//SETTERS
 			
 			//TO STRING
-			
+			//TO STRING
+			@Override
+			public String toString() {
+				return "Club [name= " + this.getName() + ", bonusAttackStrength=" + this.getBonusAttackStrength() + "]";
+			}
 }

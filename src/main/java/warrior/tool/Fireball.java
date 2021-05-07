@@ -1,6 +1,6 @@
 package tool;
 
-public class Fireball extends AttackTool{
+public class Fireball extends Spell {
 
 	//ATTRIBUTES
 	
@@ -18,4 +18,9 @@ public class Fireball extends AttackTool{
 				//SETTERS
 				
 				//TO STRING
+				//TO STRING
+				@Override
+				public String toString() {
+					return "Fireball [name= " + this.getName() + ", bonusAttackStrength=" + this.getBonusAttackStrength() + "]";
+				}
 }

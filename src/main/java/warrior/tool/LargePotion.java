@@ -18,4 +18,8 @@ public class LargePotion extends DefenseTool {
 		//SETTERS
 		
 		//TO STRING
+		@Override
+		public String toString() {
+			return "LargePotion [name= " + this.getName() + ", bonusLifeLevel= " + this.getBonusLifeLevel() + "]";
+		}
 }

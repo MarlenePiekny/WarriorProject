@@ -18,4 +18,8 @@ public class StandardPotion extends DefenseTool {
 				//SETTERS
 				
 				//TO STRING
+				@Override
+				public String toString() {
+					return "StandardPotion [name= " + this.getName() + ", bonusLifeLevel= " + this.getBonusLifeLevel() + "]";
+				}
 }
