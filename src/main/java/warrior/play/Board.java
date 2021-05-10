@@ -87,6 +87,9 @@ public class Board {
 		this.tabBoard.add(62, new Dragon());
 		this.tabBoard.add(63, new Empty());
 		this.tabBoard.add(64, new Empty());
+		
+		//Randomized the board
+		Collections.shuffle(tabBoard);
 	};
 
 	// SPECIFIC METHODS
