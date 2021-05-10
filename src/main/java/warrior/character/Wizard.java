@@ -24,7 +24,14 @@ public class Wizard extends Perso {
 	 }
 
 	 //SPECIFIC METHODS
+	@Override
+	 public String welcome() {
+		 return this.getName() + " here are your info : \n" 
+				 + "life level : " + this.getLifeLevel() + "\n" 
+				 + "attack strength : " + this.getAttackStrength();
+	 }
 	
+	@Override
 	 public String displayInformation() {
 		 return "Welcome " + this.getName() + " you are a wizard! Here are your info : \n" + "life level : " + this.getLifeLevel() + 
 				 "\n" + "attack strength : " + this.getAttackStrength();

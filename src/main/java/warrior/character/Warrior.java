@@ -4,8 +4,7 @@ import tool.*;
 public class Warrior extends Perso {
 	
 	//ATTRIBUTES
-	private AttackTool sword;
-	private DefenseTool shield;
+	private Weapon attackTool;
 	
 	//METHODS
 	
@@ -26,38 +25,38 @@ public class Warrior extends Perso {
 	}
 	
 	//SPECIFIC METHODS
-	
-	public String displayInformation() {
+	@Override
+	public String welcome() {
 		return "Welcome " + this.getName() + " you are a warrior! Here are your info : \n"
+				+ "life level : " + this.getLifeLevel() + "\n"
+				+ "attack strength : " + this.getAttackStrength();
+	}
+	
+	@Override
+	public String displayInformation() {
+		return this.getName() + " , here are your info : \n"
 				+ "life level : " + this.getLifeLevel() + "\n"
 				+ "attack strength : " + this.getAttackStrength();
 	}
 	
 	// GETTERS
 
-	public AttackTool getSword() {
-		return this.sword;
-	}
-
-	public DefenseTool getShield() {
-		return this.shield;
+	public Weapon getWeapon() {
+		return this.attackTool;
 	}
 
 	// SETTERS
 	
-	public void setSword(AttackTool sword) {
-		this.sword = sword;
+	public void setattackTool(Weapon attackTool) {
+		this.attackTool = attackTool;
 	}
 
-	public void setShield(DefenseTool shield) {
-		this.shield = shield;
-	}
 
 	// TO STRING
 		@Override
 	public String toString() {
 			return "Warrior [name= " + this.getName() + "pictureURL= " + this.getPictureURL() + "lifeLevel= " + this.getLifeLevel() + 
-					"attackStrength= " + this.getAttackStrength() + "sword= " + this.sword + "shield= " + this.getShield() +
+					"attackStrength= " + this.getAttackStrength() + "sword= " + this.attackTool + "shield= " + this.getDefenseTool() +
 					"square board= " + this.getBoardSquare() + "]";
 		}
 

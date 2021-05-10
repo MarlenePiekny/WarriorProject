@@ -117,7 +117,7 @@ public class Menu {
 			}
 
 			// Display all warrior informations
-			System.out.println(warrior.displayInformation());
+			System.out.println(warrior.welcome());
 		}
 		return warrior;
 	}
@@ -156,7 +156,7 @@ public class Menu {
 
 		}
 			// Display all wizard informations
-			System.out.println(wizard.displayInformation());
+			System.out.println(wizard.welcome());
 		
 		return wizard;
 	}

@@ -44,6 +44,8 @@ public abstract class Perso {
 
 	// SPECIFIC METHODS
 
+	public abstract String welcome();
+
 	public abstract String displayInformation();
 
 	public void onBoard(Board board) {

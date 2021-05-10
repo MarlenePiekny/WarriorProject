@@ -48,6 +48,7 @@ public class Game {
 		while (persoSquare < board.getNumberOfSquare()) {
 
 			turnToPlay(perso);
+			
 		}
 		System.out.println("Congrats " + perso.getName() + " you have completed the Warrior and Wizard game");
 		
@@ -56,8 +57,8 @@ public class Game {
 
 	public Perso turnToPlay(Perso perso) {
 		
-		// display the board
-		//System.out.println(board.getTabBoard());
+		//display perso informations
+		perso.displayInformation();
 
 		// Ask the perso to throw the dice
 		System.out.println("Enter dice to continue to play or exit to leave the game");
@@ -104,12 +105,12 @@ public class Game {
 				
 			} else if (square instanceof Enemy ) {
 				//The square contains an enemy, you fight with it
-				fightWith();
+				fightWith( (Enemy) square );
 				
 				
 			} else if (square instanceof Surprise ) {
 				//The square contains a surprise
-				getEquippedWithTool();
+				getEquippedWithTool((Surprise) square);
 				
 				
 			} else {
@@ -149,13 +150,44 @@ public class Game {
 		}
 		
 		//METHOD TO FIGHT WITH AN ENEMY
-		public void fightWith() {
+		public void fightWith(Enemy enemy) {
 			System.out.println("You fight with an enemy");
 		}
 		
 		//METHOD TO EQUIP THE PERSO IN A SURPRISE SQUARE
-		public void getEquippedWithTool() {
-			System.out.println("You get equiped with a tool");
+		public void getEquippedWithTool(Surprise surprise) {
+			
+			if (surprise instanceof DefenseTool) {
+				perso.setDefenseTool((DefenseTool) surprise);
+				perso.setLifeLevel( ((DefenseTool) surprise).getBonusLifeLevel() );
+				System.out.println("You drink the potion ");
+
+			} else if (surprise instanceof AttackTool ) {
+				getEquippedWithAttackTool((AttackTool) surprise);
+				
+			} else {
+				System.out.println("Aouch, this case shouldn't happen");
+			}
+			
+			
+		}
+		
+		//METHOD TO EQUIP THE PERSO WITH AN ATTACK TOOL AND MANAGE IF THIS IS A WARRIOR OR WIZARD TO ADAPT IF IT CAN EQUIP WITH
+		public void getEquippedWithAttackTool(AttackTool attackTool) {
+			if (attackTool instanceof Weapon && perso instanceof Warrior) {
+				//the warrior can equip with a weapon
+				perso.setAttackTool(attackTool);
+				perso.setAttackStrength(attackTool.getBonusAttackStrength());
+				
+			} else if (attackTool instanceof Spell && perso instanceof Wizard) {
+				//the wizard can equip with a spell
+				perso.setAttackTool(attackTool);
+				perso.setAttackStrength(attackTool.getBonusAttackStrength());
+				
+			} else {
+				//the perso can't equip with the attack tool because it doesn't match its class
+				System.out.println("You cant't equip with " + attackTool.getName() + " because it doesn't match your class" );
+			}
 		}
 	
 		/*
