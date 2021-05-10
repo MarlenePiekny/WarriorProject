@@ -36,6 +36,12 @@ public abstract class Enemy extends Square {
 						"\n Life level : " + getLifeLevel() +
 						"\n Attack strength : " + getLifeLevel();
 			}
+			
+			public void givesAHit(Perso perso) {
+				System.out.println("The " + this.getName() + " gives a " + this.attackStrength + "-hit to " + perso.getName() );
+				perso.setLifeLevel(this.attackStrength);
+				System.out.println("The " + this.getName() + " goes away");
+			}
 
 		
 			//GETTERS

@@ -1,6 +1,7 @@
 package character;
 import tool.*;
 import play.*;
+import square.Enemy;
 
 public abstract class Perso {
 	// ATTRIBUTES
@@ -54,6 +55,11 @@ public abstract class Perso {
 
 	public void moveOnBoard(int move) {
 		this.boardSquare = this.boardSquare + move;
+	}
+	
+	public void givesAHit(Enemy enemy) {
+		System.out.println(this.getName() + " gives a " + this.attackStrength + "-hit to the " + enemy.getName() );
+		enemy.setLifeLevel(this.attackStrength);
 	}
 
 	// GETTERS

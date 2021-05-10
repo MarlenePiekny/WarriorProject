@@ -58,7 +58,7 @@ public class Game {
 	public Perso turnToPlay(Perso perso) {
 		
 		//display perso informations
-		perso.displayInformation();
+		System.out.println(perso.displayInformation());
 
 		// Ask the perso to throw the dice
 		System.out.println("Enter dice to continue to play or exit to leave the game");
@@ -119,8 +119,6 @@ public class Game {
 				
 			}
 			
-			
-
 			break;
 		case "exit":
 			menu.endGame();
@@ -146,12 +144,22 @@ public class Game {
 		
 		//METHOD TO DO NOTHING WHEN EMPTY SQUARE
 		public void nothingHappens() {
-			System.out.println("Everything is fine, nothing happens");
+			System.out.println("There is nothing in there, nothing happens");
 		}
 		
 		//METHOD TO FIGHT WITH AN ENEMY
 		public void fightWith(Enemy enemy) {
-			System.out.println("You fight with an enemy");
+			System.out.println("You will fight with the " + enemy.getName());
+			
+			//The perso attack
+			perso.givesAHit(enemy);
+			if ( enemy.getLifeLevel() <= 0 ) {
+				//the enemy goes away
+			} else {
+				//the enemy gives a hit in return
+				enemy.givesAHit(perso);
+			}
+			
 		}
 		
 		//METHOD TO EQUIP THE PERSO IN A SURPRISE SQUARE
@@ -160,7 +168,7 @@ public class Game {
 			if (surprise instanceof DefenseTool) {
 				perso.setDefenseTool((DefenseTool) surprise);
 				perso.setLifeLevel( ((DefenseTool) surprise).getBonusLifeLevel() );
-				System.out.println("You drink the potion ");
+				System.out.println("You drink the potion and get a +" + ((DefenseTool) surprise).getBonusLifeLevel() + "-life level");
 
 			} else if (surprise instanceof AttackTool ) {
 				getEquippedWithAttackTool((AttackTool) surprise);
@@ -177,40 +185,19 @@ public class Game {
 			if (attackTool instanceof Weapon && perso instanceof Warrior) {
 				//the warrior can equip with a weapon
 				perso.setAttackTool(attackTool);
-				perso.setAttackStrength(attackTool.getBonusAttackStrength());
+				perso.setAttackStrength(perso.getAttackStrength() + attackTool.getBonusAttackStrength());
 				
 			} else if (attackTool instanceof Spell && perso instanceof Wizard) {
 				//the wizard can equip with a spell
 				perso.setAttackTool(attackTool);
-				perso.setAttackStrength(attackTool.getBonusAttackStrength());
+				perso.setAttackStrength(perso.getAttackStrength() + attackTool.getBonusAttackStrength());
 				
 			} else {
 				//the perso can't equip with the attack tool because it doesn't match its class
-				System.out.println("You cant't equip with " + attackTool.getName() + " because it doesn't match your class" );
+				System.out.println("You can't equip with " + attackTool.getName() + " because it doesn't match your class" );
 			}
 		}
 	
-		/*
-		public void putPersoToTheBeginning(Perso perso) {
-			board.setValueInTabBoard(board.getBeginningSquare(), character.getName() );
-		}
-
-		public void putPersoInBoard(Perso perso) throws PersoOvertakeGameBoardException {
-			if (perso.getBoardSquare() > board.getNumberOfSquare()) {
-				throw new PersoOvertakeGameBoardException();
-			} else {
-				board.setValueInTabBoard(perso.getBoardSquare(), perso.getName() );
-			}
-			
-		}
-
-		public void removePersoInBoard(Perso perso) {
-			board.setValueInTabBoard(perso.getBoardSquare(),  null);
-		}
-		
-		public void movePersoToTheEnd(Perso perso) {
-			board.setValueInTabBoard(board.getNumberOfSquare(), perso.getName() );
-		}
-		*/
+	
 	
 }
