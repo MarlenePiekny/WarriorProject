@@ -45,9 +45,17 @@ public abstract class Perso {
 
 	// SPECIFIC METHODS
 
-	public abstract String welcome();
+	public String welcome() {
+		return "Welcome " + this.getName() + " you are a" + this.getClass().getSimpleName() +"! Here are your info : \n"
+				+ "life level : " + this.getLifeLevel() + "\n"
+				+ "attack strength : " + this.getAttackStrength();
+	}
 
-	public abstract String displayInformation();
+	public String displayInformation() {
+		return this.getName() + " , here are your info : \n"
+				+ "life level : " + this.getLifeLevel() + "\n"
+				+ "attack strength : " + this.getAttackStrength();
+	}
 
 	public void onBoard(Board board) {
 		this.boardSquare = board.getBeginningSquare();
@@ -59,7 +67,7 @@ public abstract class Perso {
 	
 	public void givesAHit(Enemy enemy) {
 		System.out.println(this.getName() + " gives a " + this.attackStrength + "-hit to the " + enemy.getName() );
-		enemy.setLifeLevel(this.attackStrength);
+		enemy.setLifeLevel(enemy.getLifeLevel() - this.attackStrength);
 	}
 
 	// GETTERS

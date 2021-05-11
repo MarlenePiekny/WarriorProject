@@ -149,16 +149,45 @@ public class Game {
 		
 		//METHOD TO FIGHT WITH AN ENEMY
 		public void fightWith(Enemy enemy) {
-			System.out.println("You will fight with the " + enemy.getName());
+			System.out.println("You are in front of the " + enemy.getName());
 			
-			//The perso attack
-			perso.givesAHit(enemy);
-			if ( enemy.getLifeLevel() <= 0 ) {
-				//the enemy goes away
-			} else {
-				//the enemy gives a hit in return
-				enemy.givesAHit(perso);
+			String inputChoiceFight = "";
+			
+			while ( ( perso.getLifeLevel() > 0 && enemy.getLifeLevel() > 0 ) && !inputChoiceFight.equals("leave") ) {
+				
+				System.out.println(enemy.displayEnemyInformations());
+				System.out.println(perso.displayInformation());
+				
+				System.out.println("Do you want to fight or leave?");
+				inputChoiceFight = keyboard.nextLine();
+			
+				switch (inputChoiceFight) {
+				
+				case "fight":
+					
+					//The perso attack
+					perso.givesAHit(enemy);
+					if ( enemy.getLifeLevel() <= 0 ) {
+						//the enemy died
+						board.setSquareInTabBoard(persoSquare, new Empty());
+						System.out.println("The " + enemy.getName() + " is dead");
+					} else {
+						//the enemy gives a hit in return
+						enemy.givesAHit(perso);
+					}
+				break;
+				case "leave" :
+					System.out.println("You have chosen to leave. The " + enemy.getName() + " remains here");
+					enemy.displayEnemyInformations();
+					int squareToGoBackwards = dice.throwDice();
+					System.out.println("You go " + squareToGoBackwards + " square.s backwards");
+					persoSquare -= squareToGoBackwards;
+				break;	
+				default:
+					System.out.println("This word doesn't match the choices");
+				}
 			}
+			
 			
 		}
 		
@@ -167,7 +196,7 @@ public class Game {
 			
 			if (surprise instanceof DefenseTool) {
 				perso.setDefenseTool((DefenseTool) surprise);
-				perso.setLifeLevel( ((DefenseTool) surprise).getBonusLifeLevel() );
+				perso.setLifeLevel( perso.getLifeLevel() + ((DefenseTool) surprise).getBonusLifeLevel() );
 				System.out.println("You drink the potion and get a +" + ((DefenseTool) surprise).getBonusLifeLevel() + "-life level");
 
 			} else if (surprise instanceof AttackTool ) {
@@ -176,7 +205,6 @@ public class Game {
 			} else {
 				System.out.println("Aouch, this case shouldn't happen");
 			}
-			
 			
 		}
 		

@@ -25,19 +25,7 @@ public class Warrior extends Perso {
 	}
 	
 	//SPECIFIC METHODS
-	@Override
-	public String welcome() {
-		return "Welcome " + this.getName() + " you are a warrior! Here are your info : \n"
-				+ "life level : " + this.getLifeLevel() + "\n"
-				+ "attack strength : " + this.getAttackStrength();
-	}
 	
-	@Override
-	public String displayInformation() {
-		return this.getName() + " , here are your info : \n"
-				+ "life level : " + this.getLifeLevel() + "\n"
-				+ "attack strength : " + this.getAttackStrength();
-	}
 	
 	// GETTERS
 
