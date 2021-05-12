@@ -22,11 +22,10 @@ public abstract class AttackTool extends Tool {
 		}
 
 		//SPECIFIC METHOD
-		public abstract Perso interaction(Perso perso);
 		
 		@Override
 		public String displaySquareInformations() {
-			return "You have reached a square where there is a " + getName() + 
+			return "You have reached a square where there is a " + this.getName() + 
 					"\n Bonus attack strength ; " + getBonusAttackStrength();
 		}
 		

@@ -16,7 +16,6 @@ public class Game {
 	private Scanner keyboard;
 	private Menu menu;
 	private Perso perso;
-	private int persoSquare;
 
 	// METHODS
 
@@ -27,7 +26,7 @@ public class Game {
 		this.keyboard  = new Scanner(System.in);
 		this.menu = new Menu();
 		this.perso = playingPerso;
-		this.persoSquare = 0;
+
 	}
 
 	// SPECIFIC METHODS
@@ -35,19 +34,16 @@ public class Game {
 	public Perso startGame() {
 
 
-		// Place the perso on the first square
-		perso.onBoard(board);
-		//putPersoToTheBeginning(perso);
 
 		// Remind to the perso his/her place on the board
 		System.out.println(perso.getName());
-		System.out.println("Square " + persoSquare + " / " + board.getNumberOfSquare());
+		System.out.println("Square " + perso.getBoardSquare() + " / " + board.getNumberOfSquare());
 		
 		System.out.println("Tableau" + board.getTabBoard());
 
-		while (persoSquare < board.getNumberOfSquare()) {
+		while (perso.getBoardSquare() < board.getNumberOfSquare()) {
 
-			turnToPlay(perso);
+			turnToPlay();
 			
 		}
 		System.out.println("Congrats " + perso.getName() + " you have completed the Warrior and Wizard game");
@@ -55,7 +51,7 @@ public class Game {
 		return perso;
 	}
 
-	public Perso turnToPlay(Perso perso) {
+	public void turnToPlay() {
 		
 		//display perso informations
 		System.out.println(perso.displayInformation());
@@ -70,52 +66,54 @@ public class Game {
 			System.out.println("You throw the dice");
 			int diceResult = dice.throwTrickDie();
 			System.out.println("Dice result : " + diceResult);		
-
+			
+			
 			try {
+				if (perso.getBoardSquare() + diceResult > board.getNumberOfSquare()) {
+					throw new PersoOvertakeGameBoardException();
+				} 
+			
 				// the perso will remain on the game board, move the perso with the dice result
 				perso.moveOnBoard(diceResult);
-				// Move the perso to the appropriated square
-				persoSquare = movePersoOnBoard(diceResult);
-				
+
 
 			} catch (PersoOvertakeGameBoardException e) {
 
 				System.out.println(e.getMessage());
-
+				
 				// the perso will overtake the game board, move the perso to the end of the game board
 				perso.setBoardSquare(board.getNumberOfSquare());
-				// Move the perso to the appropriated square
-				persoSquare = board.getNumberOfSquare();
+
 				
 			}
 			
 
 			// Display the number of the square where the perso is
-			System.out.println("Square " + persoSquare + " / " + board.getNumberOfSquare());
+			System.out.println("Square " + perso.getBoardSquare() + " / " + board.getNumberOfSquare());
 			
 			//Check what is in the square
-			Square square = board.getSquareInTabBoard(persoSquare);
+			Square square = board.getSquareInTabBoard(perso.getBoardSquare());
+			square.interaction(perso);
+			
+			
+			
 			System.out.println( square.toString() );
 			System.out.println( square.displaySquareInformations() );
 			
 			if (square instanceof Empty) {
 				//The square is empty, nothing happen
 				nothingHappens();
-				
-				
+					
 			} else if (square instanceof Enemy ) {
 				//The square contains an enemy, you fight with it
 				fightWith( (Enemy) square );
-				
-				
+					
 			} else if (square instanceof Surprise ) {
 				//The square contains a surprise
 				getEquippedWithTool((Surprise) square);
-				
-				
+					
 			} else {
 				System.out.println("Aouch, this case shouldn't happen");
-				
 				
 			}
 			
@@ -126,20 +124,8 @@ public class Game {
 		default:
 			System.out.println("This word doesn't match the choices");
 		}
-		return perso;
 	}
 	
-		// METHOD TO MOVE THE CHARACTER ON THE BOARD
-	
-		public int movePersoOnBoard(int diceResult) throws PersoOvertakeGameBoardException {
-			if (persoSquare + diceResult > board.getNumberOfSquare()) {
-				throw new PersoOvertakeGameBoardException();
-			} else {
-				//board.setValueInTabBoard(persoSquare, perso.getName() );
-				persoSquare += diceResult;
-			}
-		return persoSquare;
-		}
 		
 		
 		//METHOD TO DO NOTHING WHEN EMPTY SQUARE
@@ -148,14 +134,14 @@ public class Game {
 		}
 		
 		//METHOD TO FIGHT WITH AN ENEMY
-		public void fightWith(Enemy enemy) {
+		/*public void fightWith(Enemy enemy) {
 			System.out.println("You are in front of the " + enemy.getName());
 			
 			String inputChoiceFight = "";
 			
 			while ( ( perso.getLifeLevel() > 0 && enemy.getLifeLevel() > 0 ) && !inputChoiceFight.equals("leave") ) {
 				
-				System.out.println(enemy.displayEnemyInformations());
+				System.out.println(enemy.displayInformations());
 				System.out.println(perso.displayInformation());
 				
 				System.out.println("Do you want to fight or leave?");
@@ -169,19 +155,23 @@ public class Game {
 					perso.givesAHit(enemy);
 					if ( enemy.getLifeLevel() <= 0 ) {
 						//the enemy died
-						board.setSquareInTabBoard(persoSquare, new Empty());
+						board.deleteEnemyInTabBoard(enemy);
 						System.out.println("The " + enemy.getName() + " is dead");
 					} else {
 						//the enemy gives a hit in return
-						enemy.givesAHit(perso);
+						enemy.givesAHitTo(perso);
+						if (perso.getLifeLevel() <= 0) {
+							System.out.println("GAME OVER : " + perso.getName() +" is dead");
+							menu.endGame();
+						}
 					}
 				break;
 				case "leave" :
 					System.out.println("You have chosen to leave. The " + enemy.getName() + " remains here");
-					enemy.displayEnemyInformations();
+					enemy.displayInformations();
 					int squareToGoBackwards = dice.throwDice();
 					System.out.println("You go " + squareToGoBackwards + " square.s backwards");
-					persoSquare -= squareToGoBackwards;
+					perso.moveOnBoard(-squareToGoBackwards);
 				break;	
 				default:
 					System.out.println("This word doesn't match the choices");
@@ -225,7 +215,7 @@ public class Game {
 				System.out.println("You can't equip with " + attackTool.getName() + " because it doesn't match your class" );
 			}
 		}
-	
+		*/
 	
 	
 }

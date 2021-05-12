@@ -21,12 +21,12 @@ public abstract class DefenseTool extends Tool {
 			}
 
 			//SPECIFIC METHOD
-			public abstract Perso interaction(Perso perso);
+			public abstract void interaction(Perso perso);
 			
 			@Override
 			public String displaySquareInformations() {
-				return "You have reached a square where there is a " + getName() + 
-						"\n Bonus attack strength ; " + getBonusLifeLevel();
+				return "You have reached a square where there is a " + super.getName() + 
+						"\n Bonus attack strength ; " + this.getBonusLifeLevel();
 			}	
 			
 			//GETTERS
@@ -42,6 +42,6 @@ public abstract class DefenseTool extends Tool {
 			//TO STRING
 			@Override
 			public String toString() {
-				return "DefenseTool [name= " + this.getName() + ", bonusLifeLevel= " + bonusLifeLevel + "]";
+				return "DefenseTool [name= " + super.getName() + ", bonusLifeLevel= " + this.bonusLifeLevel + "]";
 			}
 }

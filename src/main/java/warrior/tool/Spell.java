@@ -21,10 +21,8 @@ public abstract class Spell extends AttackTool {
 		
 		//GETTERS
 		
-		
 		//SETTERS
 
-		
 		//TO STRING
 		@Override
 		public String toString() {
