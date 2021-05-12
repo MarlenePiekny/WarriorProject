@@ -1,24 +1,82 @@
 package character;
 import tool.*;
 
+/**
+ * <b>Class representing wizard in the game</b>
+ * 
+ * <p>A wizard is defined by this informations : </p>
+ * <ul>
+ * 	<li>name : </li>
+ * 	<li>picture URL : </li>
+ *	<li>life level : </li>
+ *	<li>attack strength : </li>
+ * 	<li>attack tool : </li>
+ * 	<li>defense tool : </li>
+ * 	<li>square board position : </li>
+ * </ul>
+ * 
+ * <p>A wizard can have actions such as :</p>
+ * <ul>
+ * 	<li>welcome</li>
+ * 	<li>display informations</li>
+ * </ul>
+ * 
+ * @author Marlène
+ * @version 1.0
+ */
+
 public class Wizard extends Perso {
 
 	// ATTRIBUTES
-	private AttackTool spell;
-	private DefenseTool philter;
+	/**
+     * The wizard spell, it is editable.
+     *	@see Wizard#getSpell()
+     *	@see Wizardr#setSpell(Spell)
+     */
+	private Spell attackTool;
 
 
-	//Wizard constructor without any input
+	/**
+     * Default wizard constructor.
+     * <p>
+     * With the default wizard constructor, no name, pictureURL, attackTool, defenseTool or square board position are given.
+     * The name is set to Merlin, and the life level and attack strength are set to 5.
+     * </p>
+     * 
+     * @see Perso#Perso()
+     */
 	public Wizard() {
 		super("Merlin");
 	}
 
-	//Wizard constructor with name 
+	/**
+     * Name customized wizard constructor.
+     * <p>
+     * With the name customized wizard constructor,no pictureURL, attack tool, defense tool or square board position are given.
+     * The life level and attack strength are set to 5.
+     * </p>
+     * 
+     * @param name
+     * 
+     * @see Perso#Perso(String)
+     */
 	public Wizard(String inputName) {
 		super(inputName);
 	}
 
-	 //Wizard constructor with 4 inputs 
+	/**
+     * Customized warrior constructor.
+     * <p>
+     * With the customized warrior constructor, no attack tool, defense tool or square board position are given.
+     * </p>
+     * 
+     * @param name
+     * @param pictureURL
+     * @param lifeLevel
+     * @param attackStrength
+     * 
+     * @see Perso#Perso(String, String, int, int)
+     */ 
 	public Wizard(String inputName, String inputPicture, int inputLifeLevel, int inputAttackStrength) {
 		super(inputName, inputPicture, inputLifeLevel, inputAttackStrength);
 	 }
@@ -28,29 +86,23 @@ public class Wizard extends Perso {
 
 	 // GETTERS
 	 
-	public AttackTool getSpell() {
-		return this.spell;
+	public Spell getAttackTool() {
+		return this.attackTool;
 	}
 
-	public DefenseTool getPhilter() {
-		return this.philter;
-	}
 
 	// SETTERS
 
-	public void setSpell(AttackTool spell) {
-		this.spell = spell;
+	public void setAttackTool(Spell attackTool) {
+		this.attackTool = attackTool;
 	}
 
-	public void setPhilter(DefenseTool philter) {
-		this.philter = philter;
-	}
 
 	// TO STRING
 	@Override
 	public String toString() {
 		return "Wizard [name=" + this.getName() + ", pictureURL=" + this.getPictureURL() + ", lifeLevel=" + this.getLifeLevel()
-				+ ", attackStrength=" + this.getAttackStrength() + ", spell=" + this.getSpell() + ", philter=" + this.getPhilter()
+				+ ", attackStrength=" + this.getAttackStrength() + ", spell=" + this.getAttackTool()
 				+ "]";
 	}
 
