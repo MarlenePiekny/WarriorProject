@@ -1,6 +1,32 @@
 package square;
 
 import character.Perso;
+import character.Warrior;
+import character.Wizard;
+import tool.AttackTool;
+import tool.DefenseTool;
+import tool.Spell;
+import tool.Weapon;
+
+/**
+ * <b>Class representing surprise of the game board</b>
+ * 
+ * <p>An surprise is defined by those informations : </p>
+ * <ul>
+ * 	<li>name : </li>
+ * </ul>
+ * 
+ * <p>A surprise can have actions such as :</p>
+ * <ul>
+ * 	<li>interaction</li>
+ * 	<li>display square informations</li>
+ * 	<li>get equipped with defense tool</li>
+ * 	<li>get equipped with attack tool</li>
+ * </ul>
+ * 
+ * @author Marlène
+ * @version 1.0
+ */
 
 public abstract class Surprise extends Square {
 	
@@ -9,29 +35,104 @@ public abstract class Surprise extends Square {
 		//METHODS
 			
 			//CONSTRUCTOR
+			/**
+		     * Default surprise constructor.
+		     * <p>With the default surprise constructor, no name is given. </p>
+		     * 
+		     * @see Square#name
+		     */
 			public Surprise() {
 				super();
 			}
 
 			//SPECIFIC METHOD
-			public abstract Perso interaction(Perso perso);
-			
+			/**
+		     * Interaction with the surprise square.
+		     * <p>The perso get equipped with the tool in the surprise square. </p>
+		     * 
+		     * @param perso
+		     * 
+		     * @see Surprise#getEquippedWithDefenseTool(DefenseTool, Perso)
+		     * @see Surprise#getEquippedWithAttackTool(AttackTool, Perso)
+		     * 
+		     */
+			public void interaction(Perso perso) {
+					
+					if (this instanceof DefenseTool) {
+						this.getEquippedWithDefenseTool((DefenseTool)this, perso);
+
+					} else if (this instanceof AttackTool ) {
+						this.getEquippedWithAttackTool((AttackTool) this, perso);
+						
+					} else {
+						System.out.println("Aouch, this case shouldn't happen");
+					}
+					
+				}
+
 			public abstract String displaySquareInformations();
+			
+			/**
+		     * The perso get equipped with a defense tool.
+		     * <p>The perso get equipped with a defense tool and get the life level of it . </p>
+		     * 
+		     * @param defenseTool
+		     * @param perso
+		     * 
+		     * @see DefenseTool#getBonusLifeLevel()
+		     * 
+		     * @see Perso#setDefenseTool(DefenseTool)
+		     * @see Perso#getLifeLevel()
+		     * @see Perso#setLifeLevel(int)
+		     * 
+		     */
+			public void getEquippedWithDefenseTool(DefenseTool defenseTool, Perso perso) {
+				perso.setDefenseTool((DefenseTool) this);
+				perso.setLifeLevel( perso.getLifeLevel() + ((DefenseTool) this).getBonusLifeLevel() );
+				System.out.println("You drink the potion and get a +" + ((DefenseTool) this).getBonusLifeLevel() + "-life level");
+			}
+			
+			/**
+		     * The perso get equipped with an attack tool.
+		     * <p>If the attack tool matches the perso attack tool kind, the perso get equipped with it and get the attack strength bonus of it.
+		     * If not, the perso doesn't equipped with it.</p>
+		     * 
+		     * @param attackTool
+		     * @param perso
+		     * 
+		     * @see AttackTooll#getBonusAttackStrength()
+		     * 
+		     * @see Perso#setAttackTool(AttackTool)
+		     * @see Perso#getAttackStrength()
+		     * @see Perso#setAttackStrength(int)
+		     * 
+		     */
+			public void getEquippedWithAttackTool(AttackTool attackTool, Perso perso) {
+	
+				if (attackTool instanceof Weapon && perso instanceof Warrior) {
+					//the warrior can equip with a weapon
+					perso.setAttackTool(attackTool);
+					perso.setAttackStrength(perso.getAttackStrength() + attackTool.getBonusAttackStrength());
+					
+				} else if (attackTool instanceof Spell && perso instanceof Wizard) {
+					//the wizard can equip with a spell
+					perso.setAttackTool(attackTool);
+					perso.setAttackStrength(perso.getAttackStrength() + attackTool.getBonusAttackStrength());
+					
+				} else {
+					//the perso can't equip with the attack tool because it doesn't match its class
+					System.out.println("You can't equip with " + attackTool.getName() + " because it doesn't match your class" );
+				}
+			}
 		
 			//GETTERS
-			public String getName() {
-				return name;
-			}
-			
+
 			//SETTERS
-			public void setName(String name) {
-				this.name = name;
-			}
-		
+
 			//TO STRING
 			@Override
 			public String toString() {
-				return "Surprise [name=" + name + "]";
+				return "Surprise [name=" + super.getName() + "]";
 			}
 
 }
