@@ -2,6 +2,12 @@
 import play.*;
 import character.*;
 
+/**
+ * Class launching and managing the game
+ * @author Marlène
+ * @version 1.0
+ */
+
 public class Launch {
 
 	// ATTRIBUTES
