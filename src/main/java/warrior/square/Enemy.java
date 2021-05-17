@@ -1,8 +1,9 @@
 package square;
 
-import character.Perso;
 import play.Dice;
 import java.util.*;
+
+import perso.Perso;
 import play.*;
 
 /**
@@ -83,6 +84,7 @@ public abstract class Enemy extends Square {
 		     * </p>
 		     * 
 		     * @param perso
+		     * 		The perso playing
 		     * 
 		     * @see Square#getName()
 		     * 
@@ -95,8 +97,12 @@ public abstract class Enemy extends Square {
 		     * @see Enemy#dies()
 		     */
 			
+			
 			@Override
 			public void interaction(Perso perso) {
+				Scanner keyboard = new Scanner(System.in);
+				Dice dice = new Dice();
+				
 				System.out.println("You are in front of the " + super.getName());
 				
 				String inputChoiceFight = "";
@@ -123,6 +129,7 @@ public abstract class Enemy extends Square {
 							this.givesAHitTo(perso);
 							if (perso.getLifeLevel() <= 0) {
 								System.out.println("GAME OVER : " + perso.getName() +" is dead");
+								Menu menu = new Menu();
 								menu.endGame();
 							}
 						}
@@ -180,13 +187,14 @@ public abstract class Enemy extends Square {
 		     * <p>The enemy life level decrease to the level of the perso attack strength. <p>
 		     * 
 		     * @param perso
+		     * 		The perso playing
 		     * 
 		     * @see Perso#getName()
 		     * @see Perso#getAttackStrength()
 		     * 
 		     * @see Square#getName()
 		     * 
-		     * @see Enemy#setLifeLevel()
+		     * @see Enemy#setLifeLevel(int)
 		     * @see Enemy#getLifeLevel()
 		     * 
 		     */
@@ -200,9 +208,10 @@ public abstract class Enemy extends Square {
 		     * <p>The perso life level decrease to the level of the enemy attack strength. <p>
 		     * 
 		     * @param perso
+		     * 		The perso playing
 		     * 
 		     * @see Perso#getLifeLevel()
-		     * @see Perso#setLifeLevel()
+		     * @see Perso#setLifeLevel(int)
 		     * 
 		     * @see Square#getName()
 		     * 
@@ -218,14 +227,13 @@ public abstract class Enemy extends Square {
 		     * Makes the enemy die and disappear from the game board.
 		     * <p>All the square when there is the enemy are replaced by an empty case. <p>
 		     * 
-
 		     * @see Square#getName()
 		     * 
-		     * @see Board#deleteEnemyInTabBoard()
-		     * 
+		     * @see Enemy#setLifeLevel(int)
 		     */
 			public void dies() {
-				board.deleteEnemyInTabBoard(enemy);
+				this.setLifeLevel(0);
+				this.setName("Dead " + this.getName());
 				System.out.println("The " + super.getName() + " is dead");
 			}
 
@@ -252,6 +260,6 @@ public abstract class Enemy extends Square {
 
 			@Override
 			public String toString() {
-				return "Enemy [name=" + super.name() + ", lifeLevel=" + this.getLifeLevel() + ", attackStrength=" + this.getAttackStrength() + "]";
+				return "Enemy [name=" + super.getName() + ", lifeLevel=" + this.getLifeLevel() + ", attackStrength=" + this.getAttackStrength() + "]";
 			}
 }

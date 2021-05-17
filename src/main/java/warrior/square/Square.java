@@ -1,5 +1,5 @@
 package square;
-import character.*;
+import perso.*;
 
 /**
  * <b>Class representing square of the game board</b>
@@ -59,6 +59,7 @@ public abstract class Square {
 	     * <p>When the perso is on the square position, it display the square informations. </p>
 	     * 
 	     * @param perso
+	     * 		The perso playing
 	     * 
 	     * @see Square#toString()
 	     * @see Square#displaySquareInformations()

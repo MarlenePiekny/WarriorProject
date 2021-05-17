@@ -1,5 +1,5 @@
 package square;
-import character.*;
+import perso.*;
 
 /**
  * <b>Class representing empty square of the game board</b>

@@ -1,8 +1,8 @@
 package square;
 
-import character.Perso;
-import character.Warrior;
-import character.Wizard;
+import perso.Perso;
+import perso.Warrior;
+import perso.Wizard;
 import tool.AttackTool;
 import tool.DefenseTool;
 import tool.Spell;
@@ -43,6 +43,17 @@ public abstract class Surprise extends Square {
 		     */
 			public Surprise() {
 				super();
+			}
+			
+			/**
+		     * Name customized square constructor.
+		     * <p>With the default square constructor, a name can be given. </p>
+		     * 
+		     * @see Square#name
+		     */
+			public Surprise(String name) {
+				super(name);
+				
 			}
 
 			//SPECIFIC METHOD
