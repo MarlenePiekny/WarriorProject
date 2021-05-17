@@ -1,8 +1,9 @@
 package play;
 
 import java.util.Scanner;
-import character.*;
+
 import exception.*;
+import perso.*;
 import square.*;
 import tool.*;
 
@@ -96,7 +97,7 @@ public class Game {
 			square.interaction(perso);
 			
 			
-			
+			/*
 			System.out.println( square.toString() );
 			System.out.println( square.displaySquareInformations() );
 			
@@ -116,6 +117,7 @@ public class Game {
 				System.out.println("Aouch, this case shouldn't happen");
 				
 			}
+			*/
 			
 			break;
 		case "exit":

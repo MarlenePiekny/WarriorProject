@@ -1,17 +1,53 @@
 package play;
 
 import java.util.Scanner;
-import character.*;
+import perso.*;
 
+/**
+ * <b>Class representing the menu of the game</b>
+ * 
+ * <p>A menu is defined by those informations : </p>
+ * <ul>
+ * 	<li>keyboard : </li>
+ *  <li>game : </li>
+ * </ul>
+ * 
+ * <p>A menu can have actions such as :</p>
+ * <ul>
+ * 	<li>create perso : </li>
+ * 	<li>create warrior : </li>
+ * 	<li>create wizard: </li>
+ * 	<li>update perso : </li>
+ * 	<li>menu choices : </li>
+ * 	<li>end game : </li>
+ * </ul>
+ * 
+ * @author Marlène
+ * @version 1.0
+ */
 public class Menu {
 
 	// ATTRIBUTES
+	/**
+     * The keyboard allowing user to interact with the game.
+     * 
+     */
 	private Scanner keyboard;
+	
+	/**
+     * The game.
+     * 
+     */
 	private Game game;
 
 	// METHODS
 
 	// CONSTRUCTOR
+	/**
+     * Default menu constructor.
+     * <p>A menu made of a keyboard.</p>
+     * 
+     */
 	public Menu() {
 
 		keyboard = new Scanner(System.in);
@@ -21,7 +57,19 @@ public class Menu {
 	}
 
 	// SPECIFIC METHODS
-
+	
+	/**
+     * Create a perso.
+     * <p>Returns a perso either warrior or wizard<p>
+     * 
+     * @return Perso
+     * 
+     * @see Board#keyboard
+     * @see Board#createWarrior()
+     * @see Board#createWizard()
+     * @see Board#endGame()
+     * 
+     */
 	public Perso createPerso() {
 
 		Perso perso = null;
@@ -52,7 +100,25 @@ public class Menu {
 		}
 		return perso;
 	}
-
+	
+	/**
+     * Menu choices.
+     * <p>Returns a perso after user interactions in menu.<p>
+     * 
+     * @param Perso
+     * @return Perso
+     * 
+     * @see Board#keyboard
+     * @see Board#updatePerso(Perso)
+     * 
+     * @see Perso#getName()
+     * @see Perso#displayInformation()
+     * 
+     * @see Game#startGame()
+     * 
+     * @see Board#endGame()
+     * 
+     */
 	public Perso menuChoices(Perso perso) {
 
 		while (true) {
@@ -82,8 +148,20 @@ public class Menu {
 		}
 	}
 
-	// METHODS
-
+	/**
+     * Create a warrior.
+     * <p>Returns a perso of the class warrior.<p>
+     * 
+     * @return Warrior
+     * 
+     * @see Board#keyboard
+     * 
+     * @see Warrior#Warrior()
+     * @see Warrior#Warrior(String)
+     * @see Warrior#Warrior(String, String, int, int)
+     * 
+     * 
+     */
 	public Warrior createWarrior() {
 
 		Warrior warrior = null;
@@ -121,7 +199,20 @@ public class Menu {
 		}
 		return warrior;
 	}
-
+	
+	/**
+     * Create a wizard.
+     * <p>Returns a perso of the class wizard.<p>
+     * 
+     * @return Wizard
+     * 
+     * @see Board#keyboard
+     * 
+     * @see Wizard#Wizard()
+     * @see Wizard#Wizard(String)
+     * @see Wizard#Wizard(String, String, int, int)
+     * 
+     */
 	public Wizard createWizard() {
 
 		Wizard wizard = null;
@@ -160,7 +251,20 @@ public class Menu {
 		
 		return wizard;
 	}
-
+	
+	/**
+     * Update a perso.
+     * <p>Ask user to put informations to update name, life level and attack strength of the perso.<p>
+     * 
+     * @param Perso
+     * 
+     * @see Board#keyboard
+     * 
+     * @see Perso#setName(String)
+     * @see Perso#setLifeLevel(int)
+     * @see Perso#setAttackStrength(int)
+     * 
+     */
 	public void updatePerso(Perso perso) {
 		System.out.println("You will customize your perso : \n" + "Please enter his/her name");
 		String inputPersoName = keyboard.nextLine();
@@ -176,7 +280,14 @@ public class Menu {
 
 		System.out.println(perso.displayInformation());
 	}
-
+	
+	/**
+     * End of the game.
+     * <p>Terminate the game, switching off the console.<p>
+     * 
+     * @see System#exit(int)
+     * 
+     */
 	 public void endGame() {
 		System.out.println("You have decided to leave the game, too bad. See you soon!");
 		System.exit(0);
