@@ -1,4 +1,4 @@
-package character;
+package perso;
 import tool.*;
 
 /**
@@ -56,10 +56,8 @@ public class Warrior extends Perso {
 	
 	/**
      * Name customized warrior constructor.
-     * <p>
-     * With the name customized warrior constructor,no pictureURL, attack tool, defense tool or square board position are given.
-     * The life level and attack strength are set to 5.
-     * </p>
+     * <p> With the name customized warrior constructor,no pictureURL, attack tool, defense tool or square board position are given.<br>
+     * The life level and attack strength are set to 5.</p>
      * 
      * @param name
      * 
@@ -71,9 +69,7 @@ public class Warrior extends Perso {
 	
 	/**
      * Customized warrior constructor.
-     * <p>
-     * With the customized warrior constructor, no attack tool, defense tool or square board position are given.
-     * </p>
+     * <p>With the customized warrior constructor, no attack tool, defense tool or square board position are given.</p>
      * 
      * @param name
      * @param pictureURL
