@@ -1,9 +1,10 @@
 
+import perso.*;
 import play.*;
-import character.*;
 
 /**
- * Class launching and managing the game
+ *  <b>Class launching and managing the game.</b>
+ * 
  * @author Marlène
  * @version 1.0
  */
