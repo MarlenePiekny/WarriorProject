@@ -1,3 +1,8 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
 import perso.*;
 import play.*;
@@ -15,15 +20,15 @@ public class Launch {
 
 	// METHODS
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 
-		Menu menu = new Menu();
-		
-		//Create a character
-		Perso perso= menu.createPerso();
-		
-		//Chose an option in the menu
-		menu.menuChoices(perso);
+			Menu menu = new Menu();
+			
+			//Create a character
+			Perso perso= menu.createPerso();
+			
+			//Chose an option in the menu
+			menu.menuChoices(perso);
 
 	}
 

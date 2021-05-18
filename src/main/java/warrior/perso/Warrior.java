@@ -30,8 +30,8 @@ public class Warrior extends Perso {
 	//ATTRIBUTES
 	/**
      * The warrior weapon, it is editable.
-     *	@see Warrior#getWeapon()
-     *	@see Warrior#setWeapon(Weapon)
+     *	@see Warrior#getAttackTool()
+     *	@see Warrior#setAttackTool(Weapon)
      */
 	private Weapon attackTool;
 	
@@ -60,6 +60,7 @@ public class Warrior extends Perso {
      * The life level and attack strength are set to 5.</p>
      * 
      * @param name
+     * 		The warrior name
      * 
      * @see Perso#Perso(String)
      */
@@ -72,14 +73,18 @@ public class Warrior extends Perso {
      * <p>With the customized warrior constructor, no attack tool, defense tool or square board position are given.</p>
      * 
      * @param name
+     * 		The warrior name
      * @param pictureURL
+     * 		The warrior URL address picture
      * @param lifeLevel
+     * 		The warrior life level
      * @param attackStrength
+     * 		The warrior attack strength
      * 
      * @see Perso#Perso(String, String, int, int)
      */
-	public Warrior(String name, String picture, int lifeLevel, int attackStrength) {
-		super(name, picture, lifeLevel, attackStrength);
+	public Warrior(String name, String pictureURL, int lifeLevel, int attackStrength) {
+		super(name, pictureURL, lifeLevel, attackStrength);
 	}
 	
 	//SPECIFIC METHODS
@@ -87,13 +92,13 @@ public class Warrior extends Perso {
 	
 	// GETTERS
 
-	public Weapon getWeapon() {
+	public Weapon getAttackTool() {
 		return this.attackTool;
 	}
 
 	// SETTERS
 	
-	public void setattackTool(Weapon attackTool) {
+	public void setAttackTool(Weapon attackTool) {
 		this.attackTool = attackTool;
 	}
 

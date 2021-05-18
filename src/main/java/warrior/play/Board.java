@@ -17,7 +17,7 @@ import enemy.*;
  * 
  * <p>A game board can have actions such as :</p>
  * <ul>
- * 	<li>set a square in the ordered list of square</li>>
+ * 	<li>set a square in the ordered list of square</li>
  * </ul>
  * 
  * @author Marlène
@@ -29,8 +29,8 @@ public class Board {
 	/**
      * The number of squares of the game board
      * 
-     * @see Board#getNumberOfSquare()
-     * @see Board#setNumberOfSquare(int)
+     * @see Board#getNumberOfSquares()
+     * @see Board#setNumberOfSquares(int)
      */
 	private int numberOfSquares;
 	
@@ -38,7 +38,7 @@ public class Board {
      * The value of the first square
      * 
      * @see Board#getBeginningSquare()
-     * @see Board#setBeginningSquare()
+     * @see Board#setBeginningSquare(int)
      */
 	private int beginningSquare;
 	
@@ -55,7 +55,7 @@ public class Board {
 	// CONSTRUCTOR
 	/**
      * Default game board constructor.
-     * <p>A game board made of 65 squares starting from 0 with randomized & various squares types </p>
+     * <p>A game board made of 65 squares starting from 0 with randomized and various squares types. </p>
      * 
      * @see Board#numberOfSquares
      * @see Board#beginningSquare
@@ -101,10 +101,12 @@ public class Board {
 	
 	/**
      * Set a square in the board
-     * <p>It set a specific type of square to a specified index.<p>
+     * <p>It set a specific type of square to a specified index.</p>
      * 
      * @param index
+     * 		The index of the game tab board
      * @param square
+     * 		The kind of square to set in the game board
      * 
      * @see Board#tabBoard
      * 
@@ -115,10 +117,12 @@ public class Board {
 	
 	/**
      * Set squares in the board
-     * <p>It set number of specific type of square to several index.<p>
+     * <p>It set number of specific type of square to several index.</p>
      * 
      * @param indexes
+     * 		The array list of indexes to be set in the game tab board
      * @param square
+     * 		The kind of square to set in the game board
      * 
      * @see Board#tabBoard
      * 
@@ -138,7 +142,7 @@ public class Board {
 	
 	// GETTERS
 
-	public int getNumberOfSquare() {
+	public int getNumberOfSquares() {
 		return this.numberOfSquares;
 	}
 

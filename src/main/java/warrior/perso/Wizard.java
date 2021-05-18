@@ -30,8 +30,8 @@ public class Wizard extends Perso {
 	// ATTRIBUTES
 	/**
      * The wizard spell, it is editable.
-     *	@see Wizard#getSpell()
-     *	@see Wizardr#setSpell(Spell)
+     *	@see Wizard#getAttackTool()
+     *	@see Wizard#setAttackTool(Spell)
      */
 	private Spell attackTool;
 
@@ -57,11 +57,12 @@ public class Wizard extends Perso {
      * </p>
      * 
      * @param name
+     * 		The wizard name
      * 
      * @see Perso#Perso(String)
      */
-	public Wizard(String inputName) {
-		super(inputName);
+	public Wizard(String name) {
+		super(name);
 	}
 
 	/**
@@ -71,14 +72,18 @@ public class Wizard extends Perso {
      * </p>
      * 
      * @param name
+     * 		The wizard name
      * @param pictureURL
+     * 		The wizard URL adress picture
      * @param lifeLevel
+     * 		The wizard life level
      * @param attackStrength
+     * 		The wizard attack strength
      * 
      * @see Perso#Perso(String, String, int, int)
      */ 
-	public Wizard(String inputName, String inputPicture, int inputLifeLevel, int inputAttackStrength) {
-		super(inputName, inputPicture, inputLifeLevel, inputAttackStrength);
+	public Wizard(String name, String pictureURL, int lifeLevel, int attackStrength) {
+		super(name, pictureURL, lifeLevel, attackStrength);
 	 }
 
 	 //SPECIFIC METHODS

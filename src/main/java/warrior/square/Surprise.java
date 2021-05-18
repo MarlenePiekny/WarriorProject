@@ -49,6 +49,9 @@ public abstract class Surprise extends Square {
 		     * Name customized square constructor.
 		     * <p>With the default square constructor, a name can be given. </p>
 		     * 
+		     * @param name
+		     * 		The name of the surprise
+		     * 
 		     * @see Square#name
 		     */
 			public Surprise(String name) {
@@ -62,6 +65,7 @@ public abstract class Surprise extends Square {
 		     * <p>The perso get equipped with the tool in the surprise square. </p>
 		     * 
 		     * @param perso
+		     * 		The perso playing
 		     * 
 		     * @see Surprise#getEquippedWithDefenseTool(DefenseTool, Perso)
 		     * @see Surprise#getEquippedWithAttackTool(AttackTool, Perso)
@@ -88,7 +92,9 @@ public abstract class Surprise extends Square {
 		     * <p>The perso get equipped with a defense tool and get the life level of it . </p>
 		     * 
 		     * @param defenseTool
+		     * 		The defense tool to be equipped with
 		     * @param perso
+		     * 		The perso who will be equipped
 		     * 
 		     * @see DefenseTool#getBonusLifeLevel()
 		     * 
@@ -109,9 +115,11 @@ public abstract class Surprise extends Square {
 		     * If not, the perso doesn't equipped with it.</p>
 		     * 
 		     * @param attackTool
+		     * 		The attack tool to be equipped with
 		     * @param perso
+		     * 		The perso who will be equipped
 		     * 
-		     * @see AttackTooll#getBonusAttackStrength()
+		     * @see AttackTool#getBonusAttackStrength()
 		     * 
 		     * @see Perso#setAttackTool(AttackTool)
 		     * @see Perso#getAttackStrength()

@@ -64,6 +64,13 @@ public abstract class Enemy extends Square {
 		     * Customized enemy constructor.
 		     * <p>With the customized enemy constructor, the name, the life level and the attack strength can be set. </p>
 		     * 
+		     * @param name
+		     * 		The name of the perso
+		     * @param lifeLevel
+		     * 		The life level of the perso
+		     *  @param attackStrength
+		     * 		The attack strength of the perso
+		     * 
 		     * @see Square#name
 		     * @see Enemy#lifeLevel
 		     * @see Enemy#attackStrength
@@ -225,7 +232,7 @@ public abstract class Enemy extends Square {
 			
 			/**
 		     * Makes the enemy die and disappear from the game board.
-		     * <p>All the square when there is the enemy are replaced by an empty case. <p>
+		     * <p>All the square when there is the enemy are replaced by an empty case. </p>
 		     * 
 		     * @see Square#getName()
 		     * 

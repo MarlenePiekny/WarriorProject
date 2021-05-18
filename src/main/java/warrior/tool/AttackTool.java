@@ -51,6 +51,12 @@ public abstract class AttackTool extends Surprise {
 	     * Customized attack tool constructor.
 	     * <p>With the customized attack tool constructor, a name and an attack strength bonus are set. </p>
 	     * 
+	     *  @param name
+	     *  	The name of the attack tool
+	     *  
+	     *  @param bonusAttackStrength
+	     *  	The attack strength bonus given by the attack tool
+	     * 
 	     * @see Square#name
 	     * @see AttackTool#bonusAttackStrength
 	     */

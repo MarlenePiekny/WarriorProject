@@ -28,7 +28,7 @@ public abstract class DefenseTool extends Surprise {
      * The life level bonus given by the defense tool.
      * 
      * @see DefenseTool#getBonusLifeLevel()
-     * @see AttackTool#setBonusLifeLevel(int)
+     * @see DefenseTool#setBonusLifeLevel(int)
      */
 		private int bonusLifeLevel;
 		
@@ -51,6 +51,12 @@ public abstract class DefenseTool extends Surprise {
 		     * Customized defense tool constructor.
 		     * <p>With the customized defense tool constructor, a name and an life level bonus are set. </p>
 		     * 
+		     *  @param name
+		     *  	The name of the defense tool
+		     *  
+		     *  @param bonusLifeLevel
+		     *  	The life level bonus given by the defense tool
+		     *  
 		     * @see Square#name
 		     * @see DefenseTool#bonusLifeLevel
 		     */

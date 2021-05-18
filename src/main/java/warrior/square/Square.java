@@ -47,6 +47,9 @@ public abstract class Square {
 	     * Name customized square constructor.
 	     * <p>With the default square constructor, a name can be given. </p>
 	     * 
+	     * @param name
+	     * 		The name of the square
+	     * 
 	     * @see Square#name
 	     */
 		public Square(String name) {

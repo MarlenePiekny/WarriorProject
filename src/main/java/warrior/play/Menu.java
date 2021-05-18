@@ -1,6 +1,11 @@
 package play;
 
-import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.*;
 import perso.*;
 
 /**
@@ -39,7 +44,14 @@ public class Menu {
      * 
      */
 	private Game game;
+	
+	/**
+     * The connection to the data base.
+     * 
+     */
+	private ConnectionToDB connectionToDB;
 
+	
 	// METHODS
 
 	// CONSTRUCTOR
@@ -47,13 +59,23 @@ public class Menu {
      * Default menu constructor.
      * <p>A menu made of a keyboard.</p>
      * 
+     * @see Menu#keyboard
+     * @see Scanner#Scanner(java.io.File)
+     * 
+     * @see Menu#connectionTODB
+     * @see ConnectionToDB#ConnectionToDB()
      */
+	
 	public Menu() {
-
+		
+		//Connect to the keyboard to interact with the user
 		keyboard = new Scanner(System.in);
+		
+		//Connect with the DB
+		connectionToDB = new ConnectionToDB();
 
 		System.out.println("Welcome in the Warrior & Wizard game");
-
+		
 	}
 
 	// SPECIFIC METHODS
@@ -64,13 +86,13 @@ public class Menu {
      * 
      * @return Perso
      * 
-     * @see Board#keyboard
-     * @see Board#createWarrior()
-     * @see Board#createWizard()
-     * @see Board#endGame()
+     * @see Menu#keyboard
+     * @see Menu#createWarrior()
+     * @see Menu#createWizard()
+     * @see Menu#endGame()
      * 
      */
-	public Perso createPerso() {
+	public Perso createPerso() throws SQLException {
 
 		Perso perso = null;
 
@@ -78,11 +100,17 @@ public class Menu {
 		while (perso == null) {
 
 			System.out.println(
-					"You will create you first perso, chose between warrior and wizard, or exit to leave the game");
+					"You will select you first perso : \n" +
+					"Choose one in the list, enter list \n" +
+					"Choose between a warrior and wizard, enter warrior or wizard \n" +
+					"You want to leave, enter exit");
 			String inputPersoChoice = keyboard.nextLine();
 
 			// Input Perso choice
 			switch (inputPersoChoice) {
+			case "list":
+				getPersoListChoices();
+			break;	
 			case "warrior":
 				// create a warrior
 				perso = createWarrior();
@@ -101,22 +129,56 @@ public class Menu {
 		return perso;
 	}
 	
+	
+	/**
+     * Perso list choices.
+     * <p>Returns a perso after the player has choosen one in the existing list.<p>
+     * 
+     * @return Perso
+     * 
+     * @see Menu#updatePerso(Perso)
+     * 
+     * @see Perso#getName()
+     * @see Perso#displayInformation()
+     * 
+     * 
+     */
+	public void getPersoListChoices() throws SQLException {
+		//Collect the SQL response
+		ResultSet persoList = this.connectionToDB.SQLRequestListPerso();
+		
+					//Display existing perso
+					while (persoList.next()) {
+						int id = persoList.getInt("id");
+						String name = persoList.getString("name");
+						int lifeLevel = persoList.getInt("lifeLevel");
+						int attackStrength = persoList.getInt("attackStrength");
+						System.out.println(id + " : " + name + " , life level :  " + lifeLevel + " , attack strength : " + attackStrength);
+					}
+					
+					//Ask the user the id of the perso he/she wants
+					System.out.println("Enter the id of the perso you want");
+					String inputPersoListChoices = keyboard.nextLine();
+					
+	}
+	
 	/**
      * Menu choices.
      * <p>Returns a perso after user interactions in menu.<p>
      * 
-     * @param Perso
+     * @param perso
+     * 		The perso that will play
      * @return Perso
      * 
-     * @see Board#keyboard
-     * @see Board#updatePerso(Perso)
+     * @see Menu#keyboard
+     * @see Menu#updatePerso(Perso)
      * 
      * @see Perso#getName()
      * @see Perso#displayInformation()
      * 
      * @see Game#startGame()
      * 
-     * @see Board#endGame()
+     * @see Menu#endGame()
      * 
      */
 	public Perso menuChoices(Perso perso) {
@@ -154,7 +216,7 @@ public class Menu {
      * 
      * @return Warrior
      * 
-     * @see Board#keyboard
+     * @see Menu#keyboard
      * 
      * @see Warrior#Warrior()
      * @see Warrior#Warrior(String)
@@ -206,7 +268,7 @@ public class Menu {
      * 
      * @return Wizard
      * 
-     * @see Board#keyboard
+     * @see Menu#keyboard
      * 
      * @see Wizard#Wizard()
      * @see Wizard#Wizard(String)
@@ -254,11 +316,12 @@ public class Menu {
 	
 	/**
      * Update a perso.
-     * <p>Ask user to put informations to update name, life level and attack strength of the perso.<p>
+     * <p>Ask user to put informations to update name, life level and attack strength of the perso.</p>
      * 
-     * @param Perso
+     * @param perso
+     * 		The perso to be updated
      * 
-     * @see Board#keyboard
+     * @see Menu#keyboard
      * 
      * @see Perso#setName(String)
      * @see Perso#setLifeLevel(int)
@@ -283,7 +346,7 @@ public class Menu {
 	
 	/**
      * End of the game.
-     * <p>Terminate the game, switching off the console.<p>
+     * <p>Terminate the game, switching off the console.</p>
      * 
      * @see System#exit(int)
      * 

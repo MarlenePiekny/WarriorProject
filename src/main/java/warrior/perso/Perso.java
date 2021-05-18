@@ -50,7 +50,7 @@ public abstract class Perso {
      * The perso lifeLevel, it is editable.
      * @see Perso#Perso(String, String, int, int)
      * @see Perso#getLifeLevel()
-     * @see Perso#setLifeLevel(String)
+     * @see Perso#setLifeLevel(int)
      */
 	private int lifeLevel;
 	
@@ -97,7 +97,7 @@ public abstract class Perso {
      * @see Perso#name
      * @see Perso#pictureURL
      * @see Perso#lifeLevel
-     * @see Petso#attackStrength
+     * @see Perso#attackStrength
      */
 	public Perso() {
 		this("", "", 5,5);
@@ -112,6 +112,7 @@ public abstract class Perso {
      * </p>
      * 
      * @param name
+     * 		The name of the perso
      * 
      * @see Perso#name
      * @see Perso#pictureURL
@@ -129,9 +130,13 @@ public abstract class Perso {
      * </p>
      * 
      * @param name
+     * 		The perso name
      * @param pictureURL
+     * 		The perso URL address picture
      * @param lifeLevel
+     * 		The perso life level
      * @param attackStrength
+     * 		The perso attack strength
      * 
      * @see Perso#name
      * @see Perso#pictureURL
@@ -189,11 +194,10 @@ public abstract class Perso {
 
 	/**
      * Perso moves on board.
-     * <p>
-     * Moves the perso board square position.
-     * </p>
+     * <p>Moves the perso board square position.</p>
      * 
      * @param move
+     * 		The number squares to move
      * 
      * @see Perso#boardSquare
      */
