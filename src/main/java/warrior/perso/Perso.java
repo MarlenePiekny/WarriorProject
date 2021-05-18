@@ -21,7 +21,7 @@ import tool.*;
  * 	<li>display informations</li>
  * </ul>
  * 
- * @author Marlène
+ * @author Marlene
  * @version 1.0
  */
 

@@ -18,7 +18,7 @@ import perso.Perso;
  * 	<li>display square informations : </li>
  * </ul>
  * 
- * @author Marlène
+ * @author Marlene
  * @version 1.0
  */
 public abstract class DefenseTool extends Surprise {

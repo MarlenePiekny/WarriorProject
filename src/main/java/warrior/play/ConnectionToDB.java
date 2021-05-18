@@ -22,7 +22,7 @@ import java.sql.Statement;
  * 	<li>SQLRequest</li>
  * </ul>
  * 
- * @author Marlène
+ * @author Marlene
  * @version 1.0
  */
 public class ConnectionToDB {
@@ -83,6 +83,8 @@ public class ConnectionToDB {
      * @see ConnectionToDB#statement
      * @see Statement#executeQuery(String)
      * 
+     * @throws SQLException if the SQL doesn't work
+     * 
      */
 	public ResultSet SQLRequestListPerso() throws SQLException {
 		
@@ -102,6 +104,8 @@ public class ConnectionToDB {
      * 
      * @see ConnectionToDB#statement
      * @see Statement#executeQuery(String)
+     * 
+     *  @throws SQLException if the SQL doesn't work
      * 
      */
 	public ResultSet SQLRequest(String request) throws SQLException {

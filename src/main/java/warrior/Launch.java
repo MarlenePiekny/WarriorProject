@@ -10,7 +10,7 @@ import play.*;
 /**
  *  <b>Class launching and managing the game.</b>
  * 
- * @author Marlène
+ * @author Marlene
  * @version 1.0
  */
 

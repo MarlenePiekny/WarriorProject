@@ -20,6 +20,7 @@ import perso.*;
  * <p>A menu can have actions such as :</p>
  * <ul>
  * 	<li>create perso : </li>
+ *  <li> getPersoListChoices : </li>
  * 	<li>create warrior : </li>
  * 	<li>create wizard: </li>
  * 	<li>update perso : </li>
@@ -27,7 +28,7 @@ import perso.*;
  * 	<li>end game : </li>
  * </ul>
  * 
- * @author Marlène
+ * @author Marlene
  * @version 1.0
  */
 public class Menu {
@@ -62,8 +63,9 @@ public class Menu {
      * @see Menu#keyboard
      * @see Scanner#Scanner(java.io.File)
      * 
-     * @see Menu#connectionTODB
+     * @see Menu#connectionToDB
      * @see ConnectionToDB#ConnectionToDB()
+     * 
      */
 	
 	public Menu() {
@@ -82,7 +84,7 @@ public class Menu {
 	
 	/**
      * Create a perso.
-     * <p>Returns a perso either warrior or wizard<p>
+     * <p>Returns a perso either warrior or wizard</p>
      * 
      * @return Perso
      * 
@@ -91,6 +93,7 @@ public class Menu {
      * @see Menu#createWizard()
      * @see Menu#endGame()
      * 
+     * @throws SQLException if the SQL doesn't work
      */
 	public Perso createPerso() throws SQLException {
 
@@ -109,7 +112,7 @@ public class Menu {
 			// Input Perso choice
 			switch (inputPersoChoice) {
 			case "list":
-				getPersoListChoices();
+				perso = getPersoListChoices();
 			break;	
 			case "warrior":
 				// create a warrior
@@ -132,7 +135,7 @@ public class Menu {
 	
 	/**
      * Perso list choices.
-     * <p>Returns a perso after the player has choosen one in the existing list.<p>
+     * <p>Returns a perso after the player has choosen one in the existing list.</p>
      * 
      * @return Perso
      * 
@@ -141,25 +144,40 @@ public class Menu {
      * @see Perso#getName()
      * @see Perso#displayInformation()
      * 
-     * 
+     * @throws SQLException if the SQL doesn't work
      */
-	public void getPersoListChoices() throws SQLException {
+	public Perso getPersoListChoices() throws SQLException {
 		//Collect the SQL response
 		ResultSet persoList = this.connectionToDB.SQLRequestListPerso();
+		
+		//arraylist
+		Map<Integer, Perso> perso = new HashMap<>();
 		
 					//Display existing perso
 					while (persoList.next()) {
 						int id = persoList.getInt("id");
 						String name = persoList.getString("name");
+						String type = persoList.getString("type");
 						int lifeLevel = persoList.getInt("lifeLevel");
 						int attackStrength = persoList.getInt("attackStrength");
-						System.out.println(id + " : " + name + " , life level :  " + lifeLevel + " , attack strength : " + attackStrength);
+						System.out.println(id + " : " + name + " - " + type + " , life level :  " + lifeLevel + " , attack strength : " + attackStrength);
+						
+						Perso hero = null;
+						
+						if (type.equalsIgnoreCase("warrior")) {
+							hero = new Warrior(name,"", lifeLevel,attackStrength);
+						}
+						if (type.equalsIgnoreCase("wizard")) {
+							hero = new Wizard(name,"", lifeLevel,attackStrength);
+						}
+						perso.put(id, hero);
 					}
 					
 					//Ask the user the id of the perso he/she wants
 					System.out.println("Enter the id of the perso you want");
-					String inputPersoListChoices = keyboard.nextLine();
+					int inputPersoListChoices = keyboard.nextInt();
 					
+	return perso.get(inputPersoListChoices);		
 	}
 	
 	/**
@@ -221,7 +239,6 @@ public class Menu {
      * @see Warrior#Warrior()
      * @see Warrior#Warrior(String)
      * @see Warrior#Warrior(String, String, int, int)
-     * 
      * 
      */
 	public Warrior createWarrior() {
