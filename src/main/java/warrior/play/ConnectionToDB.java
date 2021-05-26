@@ -115,5 +115,10 @@ public class ConnectionToDB {
 	return resultSet;	
 	}
 	
-			
+	public void SQLUpdate(String request) throws SQLException {
+		
+		this.statement.executeUpdate(request);
+		
+	}
+	
 }

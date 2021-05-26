@@ -1,6 +1,7 @@
 package play;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -181,8 +182,72 @@ public class Menu {
 	}
 	
 	/**
+     * Perso list name.
+     * <p>Returns a list of existing perso name.</p>
+     * 
+     * @return nameList
+     * 
+     * 
+     * @throws SQLException if the SQL doesn't work
+     */
+	public List<String> getPersoNameList() throws SQLException {
+		List<String> nameList = new ArrayList<String>();
+		
+		//Collect the SQL response
+		ResultSet persoList = this.connectionToDB.SQLRequestListPerso();
+		
+		//Fill the tab with names
+		while (persoList.next()) {
+			String name = persoList.getString("name");
+			nameList.add(name);
+		}
+		
+	return nameList;
+	}
+	
+	/**
+     * Save perso while playing.
+     * <p>Save perso informations : name, type, life level, attack strength and board square position.</p>
+     * 
+     * @see Perso#getName()
+     * @see Perso#getClass()
+     * @see Perso#getLifeLevel()
+     * @see Perso#getAttackStrength()
+     * @see Perso#getBoardSquare()
+     * 
+     * @throws SQLException if the SQL doesn't work
+     */
+	public void savePersoInDB(Perso perso) throws SQLException {
+		
+		//Collect all the informations from the playing perso
+		String name = perso.getName();
+		String type = perso.getClass().getSimpleName();
+		int lifeLevel = perso.getLifeLevel();
+		int attackStrength = perso.getAttackStrength();
+		int boardSquare = perso.getBoardSquare();
+		
+		List<String> nameList = getPersoNameList();
+		
+		if (nameList.contains(name)) {
+			//Update the DB
+			connectionToDB.SQLUpdate("UPDATE Perso" + 
+									 " SET type = '" + type + "', lifeLevel = " + lifeLevel + ", attackStrength = " + attackStrength +
+									 ", boardSquare =  " + boardSquare + 
+									 " WHERE name = '" + name + "'" );	
+		} else {
+			//Create a new perso in the DB
+			connectionToDB.SQLRequest("INSERT INTO Perso (type, name, lifeLevel, attackStrength, boardSquare)"  +
+					 " VALUES ( '" + type + "', '" + name + "', " + lifeLevel + ", " + attackStrength + ", " + boardSquare + ")");
+		}
+		
+		
+	}
+	
+	
+	
+	/**
      * Menu choices.
-     * <p>Returns a perso after user interactions in menu.<p>
+     * <p>Returns a perso after user interactions in menu.</p>
      * 
      * @param perso
      * 		The perso that will play
@@ -199,7 +264,7 @@ public class Menu {
      * @see Menu#endGame()
      * 
      */
-	public Perso menuChoices(Perso perso) {
+	public Perso menuChoices(Perso perso) throws SQLException {
 
 		while (true) {
 
@@ -281,7 +346,7 @@ public class Menu {
 	
 	/**
      * Create a wizard.
-     * <p>Returns a perso of the class wizard.<p>
+     * <p>Returns a perso of the class wizard.</p>
      * 
      * @return Wizard
      * 
