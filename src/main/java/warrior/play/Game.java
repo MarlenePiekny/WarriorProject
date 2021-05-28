@@ -6,14 +6,13 @@ import java.util.Scanner;
 import exception.*;
 import perso.*;
 import square.*;
-import tool.*;
 
 //GAME START
 
 public class Game {
 
 	// ATTRIBUTES
-	private Board board;
+	private GameBoard board;
 	private Dice dice;
 	private Scanner keyboard;
 	private Menu menu;
@@ -41,7 +40,7 @@ public class Game {
 		System.out.println(perso.getName());
 		System.out.println("Square " + perso.getBoardSquare() + " / " + board.getNumberOfSquares());
 		
-		System.out.println("Tableau" + board.getTabBoard());
+		System.out.println("Game board : " + board);
 
 		while (perso.getBoardSquare() < board.getNumberOfSquares()) {
 
@@ -102,7 +101,7 @@ public class Game {
 			break;
 			
 		case "save":
-			menu.savePersoInDB(this.perso);
+			menu.savePerso(this.perso);
 			System.out.println("Your perso has been saved, you will leave the game");
 			menu.endGame();
 			break;	
@@ -114,15 +113,4 @@ public class Game {
 			System.out.println("This word doesn't match the choices");
 		}
 	}
-	
-		
-		
-		//METHOD TO DO NOTHING WHEN EMPTY SQUARE
-		/*public void nothingHappens() {
-			System.out.println("There is nothing in there, nothing happens");
-		}
-		*/
-	
-	
-	
 }

@@ -1,7 +1,6 @@
 package play;
 
 import java.util.Random;
-import square.Square;
 
 /**
  * <b>Class representing dice for the game</b>

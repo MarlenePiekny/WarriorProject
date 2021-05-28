@@ -74,26 +74,7 @@ public class ConnectionToDB {
 	
 	//SPECIFIC METHODS
 	
-	/**
-     * Returns the Perso table.
-     * <p>This method returns all the data lines of the SQL request from Perso table</p>
-     * 
-     * @return persoList
-     * 
-     * @see ConnectionToDB#statement
-     * @see Statement#executeQuery(String)
-     * 
-     * @throws SQLException if the SQL doesn't work
-     * 
-     */
-	public ResultSet SQLRequestListPerso() throws SQLException {
-		
-		ResultSet persoList = this.statement.executeQuery("SELECT* FROM Perso");
-		
-	return persoList;	
-	}
-	
-	
+	//REQUEST
 	/**
      * Returns the result of an given SQL request.
      * <p>This method returns all the data lines of the SQL request from Perso table</p>
@@ -110,15 +91,51 @@ public class ConnectionToDB {
      */
 	public ResultSet SQLRequest(String request) throws SQLException {
 		
-		ResultSet resultSet = this.statement.executeQuery(request);
+		ResultSet resultSet = this.getStatement().executeQuery(request);
 		
 	return resultSet;	
 	}
 	
+	//UPDATE
+	/**
+     * Send a SQL update request.
+     * <p>This method send a SQL update request to the DB/p>
+     * 
+     * @param request
+     * 		The SQL request to the data base
+     * @return resultSet
+     * 
+     * @see ConnectionToDB#statement
+     * @see Statement#executeQuery(String)
+     * 
+     * @throws SQLException if the SQL doesn't work
+     * 
+     */
 	public void SQLUpdate(String request) throws SQLException {
 		
-		this.statement.executeUpdate(request);
+		this.getStatement().executeUpdate(request);
 		
 	}
+	
+	//Getters
+	
+	public Connection getConnection() {
+		return connection;
+	}
+	
+	public Statement getStatement() {
+		return statement;
+	}
+
+	//Setters
+
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
+
+	public void setStatement(Statement statement) {
+		this.statement = statement;
+	}
+	
 	
 }

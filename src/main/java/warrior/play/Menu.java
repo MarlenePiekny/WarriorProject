@@ -1,12 +1,9 @@
 package play;
 
-import java.sql.Connection;
-
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.*;
+import DAO.*;
 import perso.*;
 
 /**
@@ -51,7 +48,7 @@ public class Menu {
      * The connection to the data base.
      * 
      */
-	private ConnectionToDB connectionToDB;
+	private HeroDAO heroDAO;
 
 	
 	// METHODS
@@ -75,7 +72,7 @@ public class Menu {
 		keyboard = new Scanner(System.in);
 		
 		//Connect with the DB
-		connectionToDB = new ConnectionToDB();
+		heroDAO = new HeroDAO();
 
 		System.out.println("Welcome in the Warrior & Wizard game");
 		
@@ -149,7 +146,7 @@ public class Menu {
      */
 	public Perso getPersoListChoices() throws SQLException {
 		//Collect the SQL response
-		ResultSet persoList = this.connectionToDB.SQLRequestListPerso();
+		ResultSet persoList = this.heroDAO.listPersoInDB();
 		
 		//arraylist
 		Map<Integer, Perso> perso = new HashMap<>();
@@ -161,15 +158,16 @@ public class Menu {
 						String type = persoList.getString("type");
 						int lifeLevel = persoList.getInt("lifeLevel");
 						int attackStrength = persoList.getInt("attackStrength");
-						System.out.println(id + " : " + name + " - " + type + " , life level :  " + lifeLevel + " , attack strength : " + attackStrength);
+						int boardSquare = persoList.getInt("boardSquare");
+						System.out.println(id + " : " + name + " - " + type + " , life level :  " + lifeLevel + " , attack strength : " + attackStrength + " , board square : " + boardSquare);
 						
 						Perso hero = null;
 						
 						if (type.equalsIgnoreCase("warrior")) {
-							hero = new Warrior(name,"", lifeLevel,attackStrength);
+							hero = new Warrior(name,"", lifeLevel,attackStrength, boardSquare);
 						}
 						if (type.equalsIgnoreCase("wizard")) {
-							hero = new Wizard(name,"", lifeLevel,attackStrength);
+							hero = new Wizard(name,"", lifeLevel,attackStrength, boardSquare);
 						}
 						perso.put(id, hero);
 					}
@@ -181,70 +179,7 @@ public class Menu {
 	return perso.get(inputPersoListChoices);		
 	}
 	
-	/**
-     * Perso list name.
-     * <p>Returns a list of existing perso name.</p>
-     * 
-     * @return nameList
-     * 
-     * 
-     * @throws SQLException if the SQL doesn't work
-     */
-	public List<String> getPersoNameList() throws SQLException {
-		List<String> nameList = new ArrayList<String>();
-		
-		//Collect the SQL response
-		ResultSet persoList = this.connectionToDB.SQLRequestListPerso();
-		
-		//Fill the tab with names
-		while (persoList.next()) {
-			String name = persoList.getString("name");
-			nameList.add(name);
-		}
-		
-	return nameList;
-	}
-	
-	/**
-     * Save perso while playing.
-     * <p>Save perso informations : name, type, life level, attack strength and board square position.</p>
-     * 
-     * @see Perso#getName()
-     * @see Perso#getClass()
-     * @see Perso#getLifeLevel()
-     * @see Perso#getAttackStrength()
-     * @see Perso#getBoardSquare()
-     * 
-     * @throws SQLException if the SQL doesn't work
-     */
-	public void savePersoInDB(Perso perso) throws SQLException {
-		
-		//Collect all the informations from the playing perso
-		String name = perso.getName();
-		String type = perso.getClass().getSimpleName();
-		int lifeLevel = perso.getLifeLevel();
-		int attackStrength = perso.getAttackStrength();
-		int boardSquare = perso.getBoardSquare();
-		
-		List<String> nameList = getPersoNameList();
-		
-		if (nameList.contains(name)) {
-			//Update the DB
-			connectionToDB.SQLUpdate("UPDATE Perso" + 
-									 " SET type = '" + type + "', lifeLevel = " + lifeLevel + ", attackStrength = " + attackStrength +
-									 ", boardSquare =  " + boardSquare + 
-									 " WHERE name = '" + name + "'" );	
-		} else {
-			//Create a new perso in the DB
-			connectionToDB.SQLRequest("INSERT INTO Perso (type, name, lifeLevel, attackStrength, boardSquare)"  +
-					 " VALUES ( '" + type + "', '" + name + "', " + lifeLevel + ", " + attackStrength + ", " + boardSquare + ")");
-		}
-		
-		
-	}
-	
-	
-	
+
 	/**
      * Menu choices.
      * <p>Returns a perso after user interactions in menu.</p>
@@ -424,6 +359,19 @@ public class Menu {
 		perso.setAttackStrength(inputPersoAttackStrength);
 
 		System.out.println(perso.displayInformation());
+	}
+	
+	/**
+     * Save perso while playing.
+     * <p>Save perso informations : name, type, life level, attack strength and board square position.</p>
+     * 
+     * @param perso
+     * 		The perso to save
+     * 
+     * @throws SQLException if the SQL doesn't work
+     */
+	public void savePerso(Perso perso) throws SQLException {
+		heroDAO.savePersoInDB(perso);
 	}
 	
 	/**
