@@ -87,6 +87,29 @@ public class Warrior extends Perso {
 		super(name, pictureURL, lifeLevel, attackStrength);
 	}
 	
+	/**
+     * Data Base warrior constructor.
+     * <p>
+     * With the customized warrior constructor, no attack tool, defense tool or square board position are given.
+     * </p>
+     * 
+     * @param name
+     * 		The warrior name
+     * @param pictureURL
+     * 		The warrior URL address picture
+     * @param lifeLevel
+     * 		The warrior life level
+     * @param attackStrength
+     * 		The warrior attack strength
+     * @param boardSquare
+     * 		The warrior board square position
+     * 
+     * @see Perso#Perso(String, String, int, int, int)
+     */
+	public Warrior(String name, String pictureURL, int lifeLevel, int attackStrength, int boardSquare) {
+		super(name, pictureURL, lifeLevel, attackStrength, boardSquare);
+	}
+	
 	//SPECIFIC METHODS
 	
 	

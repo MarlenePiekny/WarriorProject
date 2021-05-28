@@ -66,7 +66,7 @@ public class Wizard extends Perso {
 	}
 
 	/**
-     * Customized warrior constructor.
+     * Customized wizard constructor.
      * <p>
      * With the customized warrior constructor, no attack tool, defense tool or square board position are given.
      * </p>
@@ -85,6 +85,29 @@ public class Wizard extends Perso {
 	public Wizard(String name, String pictureURL, int lifeLevel, int attackStrength) {
 		super(name, pictureURL, lifeLevel, attackStrength);
 	 }
+	
+	/**
+     * Data Base wizard constructor.
+     * <p>
+     * With the customized wizard constructor, no attack tool, defense tool or square board position are given.
+     * </p>
+     * 
+     * @param name
+     * 		The wizard name
+     * @param pictureURL
+     * 		The wizard URL address picture
+     * @param lifeLevel
+     * 		The wizard life level
+     * @param attackStrength
+     * 		The wizard attack strength
+     * @param boardSquare
+     * 		The wizard board square position
+     * 
+     * @see Perso#Perso(String, String, int, int, int)
+     */
+	public Wizard(String name, String pictureURL, int lifeLevel, int attackStrength, int boardSquare) {
+		super(name, pictureURL, lifeLevel, attackStrength, boardSquare);
+	}
 
 	 //SPECIFIC METHODS
 	

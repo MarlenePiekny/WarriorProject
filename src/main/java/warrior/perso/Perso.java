@@ -144,13 +144,40 @@ public abstract class Perso {
      * @see Perso#attackStrength
      */
 	public Perso(String name, String pictureURL, int lifeLevel, int attackStrength) {
+		this(name, pictureURL, lifeLevel, attackStrength, 0);
+	}
+	
+	/**
+     * Data Base perso constructor.
+     * <p>
+     * With the customized perso constructor, no attack tool, defense tool or square board position are given.
+     * </p>
+     * 
+     * @param name
+     * 		The perso name
+     * @param pictureURL
+     * 		The perso URL address picture
+     * @param lifeLevel
+     * 		The perso life level
+     * @param attackStrength
+     * 		The perso attack strength
+     * @param boardSquare
+     * 		The perso board square position
+     * 
+     * @see Perso#name
+     * @see Perso#pictureURL
+     * @see Perso#lifeLevel
+     * @see Perso#attackStrength
+     * @see Perso#boardSquare
+     */
+	public Perso(String name, String pictureURL, int lifeLevel, int attackStrength, int boardSquare) {
 		this.name = name;
 		this.pictureURL = pictureURL;
 		this.lifeLevel = lifeLevel;
 		this.attackStrength = attackStrength;
 		this.attackTool = null;
 		this.defenseTool = null;
-		this.boardSquare = 0;
+		this.boardSquare = boardSquare;
 	}
 
 	// SPECIFIC METHODS
