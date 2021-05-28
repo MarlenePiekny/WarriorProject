@@ -23,7 +23,7 @@ import enemy.*;
  * @author Marlène
  * @version 1.0
  */
-public class Board {
+public class Board implements GameBoard {
 
 	// ATTRIBUTES
 	/**
@@ -99,6 +99,7 @@ public class Board {
 
 	// SPECIFIC METHODS
 	
+
 	/**
      * Set a square in the board
      * <p>It set a specific type of square to a specified index.</p>
@@ -111,6 +112,7 @@ public class Board {
      * @see Board#tabBoard
      * 
      */
+	@Override
 	public void setSquareInTabBoard(int index, Square square) {
 		this.tabBoard.set(index, square);
 	}
@@ -127,18 +129,12 @@ public class Board {
      * @see Board#tabBoard
      * 
      */
+	@Override
 	public void setSquareInTabBoard(Square square, int[] indexes) {
 		for(int index : indexes ) {
 			this.tabBoard.set(index, square);
 		}
 	}
-	/*
-	public void deleteEnemyInTabBoard(Enemy enemy) {
-		while( this.tabBoard.indexOf(enemy) != -1) {
-		this.setSquareInTabBoard(this.tabBoard.indexOf(enemy) , new Empty());
-		}
-	}
-	*/
 	
 	// GETTERS
 
@@ -176,6 +172,7 @@ public class Board {
 		return "Board [numberOfSquares=" + numberOfSquares + ", beginningSquare=" + beginningSquare + ", tabBoard="
 				+ tabBoard + "]";
 	}
+
 	
 
 }
