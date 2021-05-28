@@ -105,8 +105,18 @@ public abstract class Surprise extends Square {
 		     */
 			public void getEquippedWithDefenseTool(DefenseTool defenseTool, Perso perso) {
 				perso.setDefenseTool((DefenseTool) this);
-				perso.setLifeLevel( perso.getLifeLevel() + ((DefenseTool) this).getBonusLifeLevel() );
-				System.out.println("You drink the potion and get a +" + ((DefenseTool) this).getBonusLifeLevel() + "-life level");
+				
+				//Don't overtake maximum perso life level
+				if (perso.getLifeLevel() + ((DefenseTool) this).getBonusLifeLevel() > 10) {
+					perso.setLifeLevel(10);
+					System.out.println("You drink the potion and get a +" + ( ((DefenseTool) this).getBonusLifeLevel() - perso.getLifeLevel() ) + "-life level");
+					
+				} else {
+					perso.setLifeLevel( perso.getLifeLevel() + ((DefenseTool) this).getBonusLifeLevel() );
+					System.out.println("You drink the potion and get a +" + ((DefenseTool) this).getBonusLifeLevel() + "-life level");
+				}
+
+				System.out.println("You have a life level of " + perso.getLifeLevel());
 			}
 			
 			/**
@@ -129,18 +139,31 @@ public abstract class Surprise extends Square {
 			public void getEquippedWithAttackTool(AttackTool attackTool, Perso perso) {
 	
 				if (attackTool instanceof Weapon && perso instanceof Warrior) {
-					//the warrior can equip with a weapon
-					perso.setAttackTool(attackTool);
-					perso.setAttackStrength(perso.getAttackStrength() + attackTool.getBonusAttackStrength());
+					
+					//Don't overtake maximum attack strength
+					if (perso.getAttackStrength() + attackTool.getBonusAttackStrength() > 10 ) {
+						System.out.println("The bonus attack strength of this " + attackTool.getName() + " is " + attackTool.getBonusAttackStrength()+ " , it is too high, you can't equip with it");
+					} else {
+						//the warrior can equip with a weapon
+						perso.setAttackTool(attackTool);
+						perso.setAttackStrength(perso.getAttackStrength() + attackTool.getBonusAttackStrength());
+					}
+						
 					
 				} else if (attackTool instanceof Spell && perso instanceof Wizard) {
-					//the wizard can equip with a spell
-					perso.setAttackTool(attackTool);
-					perso.setAttackStrength(perso.getAttackStrength() + attackTool.getBonusAttackStrength());
+					
+					//Don't overtake maximum attack strength
+					if (perso.getAttackStrength() + attackTool.getBonusAttackStrength() > 10 ) {
+						System.out.println("The bonus attack strength of this " + attackTool.getName() + " is " + attackTool.getBonusAttackStrength()+ " , it is too high, you can't equip with it");
+					} else {
+						//the wizard can equip with a spell
+						perso.setAttackTool(attackTool);
+						perso.setAttackStrength(perso.getAttackStrength() + attackTool.getBonusAttackStrength());
+					}
 					
 				} else {
 					//the perso can't equip with the attack tool because it doesn't match its class
-					System.out.println("You can't equip with " + attackTool.getName() + " because it doesn't match your class" );
+					System.out.println("You can't equip with " + attackTool.getName() + " because it doesn't match your " + perso.getClass().getSimpleName() + " class" );
 				}
 			}
 		
