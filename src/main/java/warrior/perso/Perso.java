@@ -214,9 +214,9 @@ public abstract class Perso {
      * @see Perso#attackStrength
      */
 	public String displayInformation() {
-		return this.getName() + " , here are your info : "
-				+ "\n life level : " + this.getLifeLevel()
-				+ "\n attack strength : " + this.getAttackStrength();
+		return "\n     | " + this.getName() + " , here are your info : \n" +
+				 "     | life level : " + this.getLifeLevel() + "\n" +
+				 "     | attack strength : " + this.getAttackStrength() + "\n";
 	}
 
 	/**

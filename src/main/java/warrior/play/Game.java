@@ -37,8 +37,10 @@ public class Game {
 
 
 		// Remind to the perso his/her place on the board
-		System.out.println(perso.getName());
-		System.out.println("Square " + perso.getBoardSquare() + " / " + board.getNumberOfSquares());
+		System.out.println("      --------------------------- \n" +
+						   "     |  "  + perso.getName() + "\n" +
+						   "     |  Square position " + perso.getBoardSquare() + " / " + board.getNumberOfSquares() + " | \n" +
+						   "      --------------------------- \n");
 		
 		System.out.println("Game board : " + board);
 
@@ -58,17 +60,21 @@ public class Game {
 		System.out.println(perso.displayInformation());
 
 		// Ask the perso to throw the dice
-		System.out.println("Enter dice to continue to play \n" +
-							"Enter exit to leave the game \n" +
-							"Enter save to save your perso" )
-		;
+		
+		System.out.println(
+				"You are on the game board\n" +
+				"Throw the dice to continue to play ----- enter dice \n" +
+				"Leave the game without saving ---------- enter exit \n" +
+				"Save and leave the game ---------------- enter save \n \n" +
+				"--------------------------------------------------- \n");
+
 		String inputPersoInGame = keyboard.nextLine();
 
 		switch (inputPersoInGame) {
 		case "dice":
 			// Throw the dice
 			System.out.println("You throw the dice");
-			int diceResult = dice.throwTrickDie();
+			int diceResult = dice.throwDice();
 			System.out.println("Dice result : " + diceResult);		
 			
 			
@@ -93,7 +99,10 @@ public class Game {
 			
 
 			// Display the number of the square where the perso is
-			System.out.println("Square " + perso.getBoardSquare() + " / " + board.getNumberOfSquares());
+			System.out.println("      --------------------------- \n" +
+					   "     |  "  + perso.getName() + "\n" +
+					   "     |  Square position " + perso.getBoardSquare() + " / " + board.getNumberOfSquares() + " | \n" +
+					   "      --------------------------- \n");
 			
 			//Check what is in the square
 			Square square = board.getSquareInTabBoard(perso.getBoardSquare());

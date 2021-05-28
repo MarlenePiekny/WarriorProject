@@ -73,12 +73,21 @@ public class Menu {
 		
 		//Connect with the DB
 		heroDAO = new HeroDAO();
-
-		System.out.println("Welcome in the Warrior & Wizard game");
 		
 	}
 
 	// SPECIFIC METHODS
+	
+	/**
+     * Welcome the player.
+     * <p>Display a welcome message</p>
+     * 
+     */
+	public void welcoming() {
+	System.out.println("------------------------------------ \n \n" +
+			   "Welcome in the Warrior & Wizard game \n \n" +
+			   "------------------------------------ \n");
+	}
 	
 	/**
      * Create a perso.
@@ -101,10 +110,12 @@ public class Menu {
 		while (perso == null) {
 
 			System.out.println(
-					"You will select you first perso : \n" +
-					"Choose one in the list, enter list \n" +
-					"Choose between a warrior and wizard, enter warrior or wizard \n" +
-					"You want to leave, enter exit");
+					"You will select you first perso \n" +
+					"Choose one in the list ----- enter list \n" +
+					"Choose a warrior ----------- enter warrior \n" +
+					"Choose a wizard ------------ enter wizard \n" +
+					"You want to leave ---------- enter exit \n \n"+
+					"------------------------------------ \n");
 			String inputPersoChoice = keyboard.nextLine();
 
 			// Input Perso choice
@@ -124,7 +135,7 @@ public class Menu {
 				this.endGame();
 				break;
 			default:
-				System.out.println("This word doesn't match the choices");
+				System.out.println("\n This word doesn't match the choices \n");
 			}
 		}
 		return perso;
@@ -159,7 +170,7 @@ public class Menu {
 						int lifeLevel = persoList.getInt("lifeLevel");
 						int attackStrength = persoList.getInt("attackStrength");
 						int boardSquare = persoList.getInt("boardSquare");
-						System.out.println(id + " : " + name + " - " + type + " , life level :  " + lifeLevel + " , attack strength : " + attackStrength + " , board square : " + boardSquare);
+						System.out.println(id + " : " + name + " - " + type + " | life level :  " + lifeLevel + " | attack strength : " + attackStrength + " | board square : " + boardSquare);
 						
 						Perso hero = null;
 						
@@ -173,8 +184,9 @@ public class Menu {
 					}
 					
 					//Ask the user the id of the perso he/she wants
-					System.out.println("Enter the id of the perso you want");
+					System.out.println("\nEnter the id of the perso you want");
 					int inputPersoListChoices = keyboard.nextInt();
+					keyboard.nextLine();
 					
 	return perso.get(inputPersoListChoices);		
 	}
@@ -203,8 +215,10 @@ public class Menu {
 
 		while (true) {
 
-			System.out.println("You are now ready to play! :) \n"
-					+ "Do you want to play, see your warrior informations or edit your warrior. Please enter play, see or edit :");
+			System.out.println("\nYou are now ready to play! :) \n" +
+					"You want to play ------------------ enter play \n" +
+					"See your " + perso.getClass().getSimpleName() + " informations ----- enter see \n" + 
+					"Edit your " + perso.getClass().getSimpleName() + "------------------ enter edit \n");
 			String inputMenuChoice = keyboard.nextLine();
 
 			switch (inputMenuChoice) {
@@ -215,7 +229,8 @@ public class Menu {
 				updatePerso(perso);
 				break;
 			case "play":
-				System.out.println("Great! Welcome " + perso.getName() + "! Let's play");
+				System.out.println("------------------------------------ \n \n" + 
+								   "Great! Welcome " + perso.getName() + "! Let's play \n");
 				game = new Game(perso);
 				game.startGame();
 				return perso;
@@ -223,14 +238,14 @@ public class Menu {
 				this.endGame();
 				break;
 			default:
-				System.out.println("Sorry this answer doesn't exist :( ");
+				System.out.println("\n Sorry this answer doesn't exist :( \n");
 			}
 		}
 	}
 
 	/**
      * Create a warrior.
-     * <p>Returns a perso of the class warrior.<p>
+     * <p>Returns a perso of the class warrior.</p>
      * 
      * @return Warrior
      * 
@@ -270,7 +285,7 @@ public class Menu {
 				warrior = new Warrior(inputWarriorName1, "", inputWarriorLifeLevel, inputWarriorAttackStrength);
 				break;
 			default:
-				System.out.println("Sorry this answer doesn't exist :( ");
+				System.out.println("\nSorry this answer doesn't exist :( \n");
 			}
 
 			// Display all warrior informations
@@ -321,7 +336,7 @@ public class Menu {
 				wizard = new Wizard(inputWizardName1, "", inputWizardLifeLevel, inputWizardAttackStrength);
 				break;
 			default:
-				System.out.println("Sorry this answer doesn't exist :( ");
+				System.out.println("\nSorry this answer doesn't exist :( \n");
 			}
 
 		}
@@ -382,7 +397,10 @@ public class Menu {
      * 
      */
 	 public void endGame() {
-		System.out.println("You have decided to leave the game, too bad. See you soon!");
+		 System.out.println("------------------------------------ \n \n " +
+				            "You have decided to leave the game, too bad. See you soon! \n" +
+				   			"------------------------------------ \n \n");
+
 		System.exit(0);
 	}
 
