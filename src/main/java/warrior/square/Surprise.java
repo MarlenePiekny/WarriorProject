@@ -72,7 +72,7 @@ public abstract class Surprise extends Square {
 		     * @see Surprise#getEquippedWithAttackTool(AttackTool, Perso)
 		     * 
 		     */
-			public void interaction(Perso perso, Board board) {
+			public int interaction(Perso perso) {
 					
 					if (this instanceof DefenseTool) {
 						this.getEquippedWithDefenseTool((DefenseTool)this, perso);
@@ -83,6 +83,7 @@ public abstract class Surprise extends Square {
 					} else {
 						System.out.println("Aouch, this case shouldn't happen");
 					}
+					return 0;
 					
 				}
 

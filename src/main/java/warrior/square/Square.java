@@ -68,9 +68,10 @@ public abstract class Square {
 	     * @see Square#toString()
 	     * @see Square#displaySquareInformations()
 	     */
-		public void interaction(Perso perso, Board board) {
+		public int interaction(Perso perso) {
 			System.out.println( this.toString() );
 			System.out.println( this.displaySquareInformations() );
+			return 0;
 		}
 		
 		/**

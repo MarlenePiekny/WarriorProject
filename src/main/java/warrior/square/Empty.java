@@ -41,8 +41,9 @@ public class Empty extends Square {
 	
 		//SPECIFIC METHOD
 		@Override
-		public void interaction(Perso perso) {
+		public int interaction(Perso perso) {
 				System.out.println("There is nothing in there, nothing happens");
+				return 0;
 		}
 		
 		@Override

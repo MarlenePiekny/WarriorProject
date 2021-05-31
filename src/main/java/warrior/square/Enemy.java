@@ -106,7 +106,7 @@ public abstract class Enemy extends Square {
 			
 			
 			@Override
-			public void interaction(Perso perso, Board board) {
+			public int interaction(Perso perso) {
 				Scanner keyboard = new Scanner(System.in);
 				Dice dice = new Dice();
 				
@@ -141,29 +141,21 @@ public abstract class Enemy extends Square {
 							}
 						}
 					break;
+					
 					case "leave" :
 						System.out.println("You have chosen to leave. The " + this.getName() + " remains in the game");
 						this.displayInformations();
 						int squareToGoBackwards = dice.throwDice();
-						try {
-							if (perso.getBoardSquare() - squareToGoBackwards < board.getBeginningSquare() ) {
-								throw new PersoOvertakeGameBoardException();
-							}
-							
-						} catch (PersoOvertakeGameBoardException e) {
-							System.out.println(e.getMessage());
-							
-							// the perso will overtake the game board, move the perso to the beginning of the game board
-							perso.setBoardSquare(board.getBeginningSquare());
-
-						}
+						
+						
 						System.out.println("You go " + squareToGoBackwards + " square.s backwards");
-						perso.moveOnBoard(-squareToGoBackwards);
-					break;	
+					return -squareToGoBackwards;
+					
 					default:
 						System.out.println("This word doesn't match the choices");
 					}
 				}
+				return 0;
 			}
 			
 			/**
@@ -196,9 +188,9 @@ public abstract class Enemy extends Square {
 		     * @see Enemy#getAttackStrength()
 		     */
 			public String displayInformations() {
-				return super.getName() +
-						"\n Life level : " + this.getLifeLevel() +
-						"\n Attack strength : " + this.getAttackStrength();
+				return "\n     | " + super.getName() + "\n" +
+						"     | life level : " + this.getLifeLevel() + "\n" +
+						"     | attack strength : " + this.getAttackStrength() + "\n";
 			}
 			
 			/**

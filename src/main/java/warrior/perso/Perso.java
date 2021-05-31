@@ -218,25 +218,7 @@ public abstract class Perso {
 				 "     | life level : " + this.getLifeLevel() + "\n" +
 				 "     | attack strength : " + this.getAttackStrength() + "\n";
 	}
-
-	/**
-     * Perso moves on board.
-     * <p>Moves the perso board square position.</p>
-     * 
-     * @param move
-     * 		The number squares to move
-     * 
-     * @see Perso#boardSquare
-     */
-	public void moveOnBoard(int move) {
-		this.boardSquare = this.boardSquare + move;
-	}
 	
-	/*public void givesAHit(Enemy enemy) {
-		System.out.println(this.getName() + " gives a " + this.attackStrength + "-hit to the " + enemy.getName() );
-		enemy.setLifeLevel(enemy.getLifeLevel() - this.attackStrength);
-	}
-	*/
 	
 	// GETTERS
 

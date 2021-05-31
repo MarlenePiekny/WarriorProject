@@ -215,7 +215,7 @@ public class Menu {
 
 		while (true) {
 
-			System.out.println("\nYou are now ready to play! :) \n" +
+			System.out.println("\n" + perso.getName() + ", you are now ready to play! :) \n" +
 					"You want to play ------------------ enter play \n" +
 					"See your " + perso.getClass().getSimpleName() + " informations ----- enter see \n" + 
 					"Edit your " + perso.getClass().getSimpleName() + "------------------ enter edit \n");
@@ -230,7 +230,7 @@ public class Menu {
 				break;
 			case "play":
 				System.out.println("------------------------------------ \n \n" + 
-								   "Great! Welcome " + perso.getName() + "! Let's play \n");
+								   "Welcome " + perso.getName() + "! Let's play :) \n");
 				game = new Game(perso);
 				game.startGame();
 				return perso;

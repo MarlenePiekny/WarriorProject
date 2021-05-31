@@ -12,7 +12,7 @@ import square.*;
 public class Game {
 
 	// ATTRIBUTES
-	private GameBoard board;
+	private Board board;
 	private Dice dice;
 	private Scanner keyboard;
 	private Menu menu;
@@ -33,14 +33,6 @@ public class Game {
 	// SPECIFIC METHODS
 
 	public Perso startGame() throws SQLException {
-
-
-
-		// Remind to the perso his/her place on the board
-		System.out.println("      --------------------------- \n" +
-						   "     |  "  + perso.getName() + "\n" +
-						   "     |  Square position " + perso.getBoardSquare() + " / " + board.getNumberOfSquares() + " | \n" +
-						   "      --------------------------- \n");
 		
 		System.out.println("Game board : " + board);
 
@@ -53,16 +45,57 @@ public class Game {
 		
 		return perso;
 	}
-
+	
+	/**
+     * Moves on board.
+     * <p>Moves the perso board square position.</p>
+     * 
+     * @param move
+     * 		The number squares to move
+     * 
+     * @see Perso#boardSquare
+     */
+	public void movesOnBoard(int move) {
+		try {	
+			if (perso.getBoardSquare() + move > board.getNumberOfSquares() ) {
+				throw new PersoOvertakeGameBoardException();
+			}
+			if (perso.getBoardSquare() + move < board.getBeginningSquare() ) {
+				throw new PersoOvertakeGameBoardException();
+			}
+		} catch ( PersoOvertakeGameBoardException e ) {
+			
+		}
+		perso.setBoardSquare(perso.getBoardSquare() + move);
+	}
+	
+	
+	/**
+     * Perso turn to play.
+     * <p>Game play for a perso in a turn.</p>
+     * 
+     * @param move
+     * 		The number squares to move
+     * 
+     * @see Perso#displayInformation()
+     * @see Dice#throwDice()
+     * @see Perso#getBoardSquare()
+     * @see Board#getNumberOfSquares()
+     * @see Game#movesOnBoard(int)
+     * @see Perso#setBoardSquare(int)
+     * 
+     * @throws SQLException if the SQL doesn't work
+     */
 	public void turnToPlay() throws SQLException {
 		
 		//display perso informations
-		System.out.println(perso.displayInformation());
+		displayPersoDetails();
 
 		// Ask the perso to throw the dice
 		
 		System.out.println(
-				"You are on the game board\n" +
+				"\n" +
+				"This is your turn to play \n" +
 				"Throw the dice to continue to play ----- enter dice \n" +
 				"Leave the game without saving ---------- enter exit \n" +
 				"Save and leave the game ---------------- enter save \n \n" +
@@ -84,7 +117,7 @@ public class Game {
 				} 
 			
 				// the perso will remain on the game board, move the perso with the dice result
-				perso.moveOnBoard(diceResult);
+				this.movesOnBoard(diceResult);
 
 
 			} catch (PersoOvertakeGameBoardException e) {
@@ -98,15 +131,15 @@ public class Game {
 			}
 			
 
-			// Display the number of the square where the perso is
-			System.out.println("      --------------------------- \n" +
-					   "     |  "  + perso.getName() + "\n" +
-					   "     |  Square position " + perso.getBoardSquare() + " / " + board.getNumberOfSquares() + " | \n" +
-					   "      --------------------------- \n");
+			// Display the perso details
+			this.displayPersoDetails();
 			
 			//Check what is in the square
 			Square square = board.getSquareInTabBoard(perso.getBoardSquare());
-			square.interaction(perso, (Board) board);
+			int squareToGoBack = square.interaction(perso);
+			
+			movesOnBoard(squareToGoBack);
+			
 			break;
 			
 		case "save":
@@ -122,4 +155,13 @@ public class Game {
 			System.out.println("This word doesn't match the choices");
 		}
 	}
+	
+	public void displayPersoDetails() {
+		System.out.println("      --------------------------- \n" +
+						   "     |  "  + perso.getName() + "\n" +
+						   "     |  Life level : " + perso.getLifeLevel() + "          | \n" +
+						   "     |  Attack strength : " + perso.getAttackStrength() + "     | \n" +
+						   "     |  Square position " + perso.getBoardSquare() + " / " + board.getNumberOfSquares() + "   | \n" +
+					   	   "      --------------------------- \n");
+	}	
 }
