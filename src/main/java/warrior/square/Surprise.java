@@ -1,6 +1,7 @@
 package square;
 
 import perso.Perso;
+import play.*;
 import perso.Warrior;
 import perso.Wizard;
 import tool.AttackTool;
@@ -71,7 +72,7 @@ public abstract class Surprise extends Square {
 		     * @see Surprise#getEquippedWithAttackTool(AttackTool, Perso)
 		     * 
 		     */
-			public void interaction(Perso perso) {
+			public void interaction(Perso perso, Board board) {
 					
 					if (this instanceof DefenseTool) {
 						this.getEquippedWithDefenseTool((DefenseTool)this, perso);

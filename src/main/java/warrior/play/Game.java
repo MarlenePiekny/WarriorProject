@@ -106,7 +106,7 @@ public class Game {
 			
 			//Check what is in the square
 			Square square = board.getSquareInTabBoard(perso.getBoardSquare());
-			square.interaction(perso);
+			square.interaction(perso, (Board) board);
 			break;
 			
 		case "save":

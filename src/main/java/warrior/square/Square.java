@@ -1,5 +1,6 @@
 package square;
 import perso.*;
+import play.*;
 
 /**
  * <b>Class representing square of the game board</b>
@@ -67,7 +68,7 @@ public abstract class Square {
 	     * @see Square#toString()
 	     * @see Square#displaySquareInformations()
 	     */
-		public void interaction(Perso perso) {
+		public void interaction(Perso perso, Board board) {
 			System.out.println( this.toString() );
 			System.out.println( this.displaySquareInformations() );
 		}

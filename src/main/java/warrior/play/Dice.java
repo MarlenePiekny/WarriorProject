@@ -83,6 +83,19 @@ public class Dice {
 		return 1;
 	}
 	
+	/**
+     * Display a text art dice.
+     * <p>It returns a string which appears as a dice. <p>
+     * 
+     * @param diceValue
+     * 
+     * @return text art dice
+     * 
+     */
+	public String textArtDis(int diceValue) {
+		return "";
+	}
+	
 	//GETTERS
 	
 	public int getNumberOfSides() {

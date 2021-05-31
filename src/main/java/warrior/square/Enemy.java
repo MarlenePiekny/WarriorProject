@@ -1,8 +1,8 @@
 package square;
 
-import play.Dice;
 import java.util.*;
 
+import exception.PersoOvertakeGameBoardException;
 import perso.Perso;
 import play.*;
 
@@ -106,7 +106,7 @@ public abstract class Enemy extends Square {
 			
 			
 			@Override
-			public void interaction(Perso perso) {
+			public void interaction(Perso perso, Board board) {
 				Scanner keyboard = new Scanner(System.in);
 				Dice dice = new Dice();
 				
@@ -145,6 +145,18 @@ public abstract class Enemy extends Square {
 						System.out.println("You have chosen to leave. The " + this.getName() + " remains in the game");
 						this.displayInformations();
 						int squareToGoBackwards = dice.throwDice();
+						try {
+							if (perso.getBoardSquare() - squareToGoBackwards < board.getBeginningSquare() ) {
+								throw new PersoOvertakeGameBoardException();
+							}
+							
+						} catch (PersoOvertakeGameBoardException e) {
+							System.out.println(e.getMessage());
+							
+							// the perso will overtake the game board, move the perso to the beginning of the game board
+							perso.setBoardSquare(board.getBeginningSquare());
+
+						}
 						System.out.println("You go " + squareToGoBackwards + " square.s backwards");
 						perso.moveOnBoard(-squareToGoBackwards);
 					break;	
